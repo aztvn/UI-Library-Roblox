@@ -1,1 +1,2535 @@
-local a={}a.__index=a;local b=game:GetService("TweenService")local c=game:GetService("UserInputService")local d=game:GetService("RunService")local d=game:GetService("Players")local e=game:GetService("CoreGui")local f=game:GetService("HttpService")local f=d.LocalPlayer;local g;local e,h=pcall(function()local a=e.Name;g=e end)if not e or not g then g=f:WaitForChild("PlayerGui")end;local e={Logo="rbxassetid://80440647852304",Home="rbxassetid://10709791000",Terminal="rbxassetid://10734982144",Sliders="rbxassetid://10734963400",Palette="rbxassetid://10709791100",Settings="rbxassetid://10734950309",Play="rbxassetid://10734923549",Check="rbxassetid://10709790644",Close="rbxassetid://10747384394",Exit="rbxassetid://10723434906",External="rbxassetid://10723346684",Info="rbxassetid://10723415903",Bell="rbxassetid://10709775704",Copy="rbxassetid://10709812159",Minus="rbxassetid://10734896206",User="rbxassetid://10747373176",Key="rbxassetid://10723416652",Shield="rbxassetid://10734951847",ChevronRight="rbxassetid://10709790387"}local h="CaoTuanAnh_Theme.txt";local i={["Luxury Gold"]={Name="Luxury Gold",Accent=Color3.fromRGB(245,158,11),Bright=Color3.fromRGB(255,215,0),Light=Color3.fromRGB(254,240,138),BgCard=Color3.fromRGB(13,13,20),BgInner=Color3.fromRGB(18,18,28),Border=Color3.fromRGB(245,158,11),Grad1=Color3.fromRGB(255,224,102),Grad2=Color3.fromRGB(245,158,11)},["Cyber Cyan"]={Name="Cyber Cyan",Accent=Color3.fromRGB(6,182,212),Bright=Color3.fromRGB(56,189,248),Light=Color3.fromRGB(186,230,253),BgCard=Color3.fromRGB(10,16,24),BgInner=Color3.fromRGB(14,22,34),Border=Color3.fromRGB(6,182,212),Grad1=Color3.fromRGB(56,189,248),Grad2=Color3.fromRGB(6,182,212)},["Ruby Crimson"]={Name="Ruby Crimson",Accent=Color3.fromRGB(239,68,68),Bright=Color3.fromRGB(248,113,113),Light=Color3.fromRGB(254,202,202),BgCard=Color3.fromRGB(20,12,14),BgInner=Color3.fromRGB(28,16,20),Border=Color3.fromRGB(239,68,68),Grad1=Color3.fromRGB(248,113,113),Grad2=Color3.fromRGB(239,68,68)},["Emerald Green"]={Name="Emerald Green",Accent=Color3.fromRGB(16,185,129),Bright=Color3.fromRGB(52,211,153),Light=Color3.fromRGB(167,243,208),BgCard=Color3.fromRGB(10,18,14),BgInner=Color3.fromRGB(14,26,20),Border=Color3.fromRGB(16,185,129),Grad1=Color3.fromRGB(52,211,153),Grad2=Color3.fromRGB(16,185,129)},["Amethyst Purple"]={Name="Amethyst Purple",Accent=Color3.fromRGB(168,85,247),Bright=Color3.fromRGB(192,132,252),Light=Color3.fromRGB(233,213,255),BgCard=Color3.fromRGB(18,12,24),BgInner=Color3.fromRGB(26,16,34),Border=Color3.fromRGB(168,85,247),Grad1=Color3.fromRGB(192,132,252),Grad2=Color3.fromRGB(168,85,247)}}local j="Luxury Gold";if readfile and isfile and isfile(h)then local a,b=pcall(readfile,h)if a and b and i[b]then j=b end end;local k=i[j];local l={Borders={},Accents={},Lights={},Cards={},Grads={}}local function m(a,b,c)table.insert(l[a],{Object=b,Property=c or"Color"})end;local function n(a)if not i[a]then return end;j=a;k=i[a];if writefile then pcall(writefile,h,a)end;for a,a in ipairs(l.Borders)do if a.Object and a.Object.Parent then b:Create(a.Object,TweenInfo.new(0.3),{[a.Property]=k.Border}):Play()end end;for a,a in ipairs(l.Accents)do if a.Object and a.Object.Parent then b:Create(a.Object,TweenInfo.new(0.3),{[a.Property]=k.Accent}):Play()end end;for a,a in ipairs(l.Lights)do if a.Object and a.Object.Parent then b:Create(a.Object,TweenInfo.new(0.3),{[a.Property]=k.Light}):Play()end end;for a,a in ipairs(l.Cards)do if a.Object and a.Object.Parent then b:Create(a.Object,TweenInfo.new(0.3),{[a.Property]=k.BgCard}):Play()end end;for a,a in ipairs(l.Grads)do if a.Object and a.Object.Parent then a.Object.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,k.Grad1),ColorSequenceKeypoint.new(1,k.Grad2)})end end end;local function h(a,b)local d,e,f,g;b.InputBegan:Connect(function(b)if b.UserInputType==Enum.UserInputType.MouseButton1 or b.UserInputType==Enum.UserInputType.Touch then d=true;f=b.Position;g=a.Position;b.Changed:Connect(function()if b.UserInputState==Enum.UserInputState.End then d=false end end)end end)b.InputChanged:Connect(function(a)if a.UserInputType==Enum.UserInputType.MouseMovement or a.UserInputType==Enum.UserInputType.Touch then e=a end end)c.InputChanged:Connect(function(b)if b==e and d then local b=b.Position-f;a.Position=UDim2.new(g.X.Scale,g.X.Offset+b.X,g.Y.Scale,g.Y.Offset+b.Y)end end)end;function a:CreateWindow(i)i=i or{}local j=i.Name or"🌸Cao Tuan Anh Roblox🌸";local l=i.Subtitle or"YTB Cao Tuan Anh Roblox";local i=i.LogoID or e.Logo;if g:FindFirstChild("CaoTuanAnh_ScriptHubGUI")then g.CaoTuanAnh_ScriptHubGUI:Destroy()end;local o=Instance.new("ScreenGui")o.Name="CaoTuanAnh_ScriptHubGUI";o.ResetOnSpawn=false;o.ZIndexBehavior=Enum.ZIndexBehavior.Sibling;o.Parent=g;local g=Instance.new("Frame")g.Name="MainCard";g.Size=UDim2.new(0,680,0,440)g.Position=UDim2.new(0.5,0,0.5,0)g.AnchorPoint=Vector2.new(0.5,0.5)g.BackgroundColor3=k.BgCard;g.BackgroundTransparency=0.05;g.BorderSizePixel=0;g.ClipsDescendants=true;g.Parent=o;m("Cards",g,"BackgroundColor3")local p=Instance.new("UICorner")p.CornerRadius=UDim.new(0,20)p.Parent=g;local p=Instance.new("UIStroke")p.Thickness=1.5;p.Color=k.Border;p.Transparency=0.35;p.Parent=g;m("Borders",p,"Color")local p=Instance.new("Frame")p.Name="TopGoldLine";p.Size=UDim2.new(1,0,0,2)p.Position=UDim2.new(0,0,0,0)p.BackgroundColor3=k.Bright;p.BorderSizePixel=0;p.ZIndex=20;p.Parent=g;local q=Instance.new("UIGradient")q.Color=ColorSequence.new({ColorSequenceKeypoint.new(0,k.Grad1),ColorSequenceKeypoint.new(1,k.Grad2)})q.Parent=p;m("Grads",q)local p=Instance.new("Frame")p.Name="TopBar";p.Size=UDim2.new(1,0,0,52)p.BackgroundColor3=Color3.fromRGB(10,10,16)p.BackgroundTransparency=0.35;p.BorderSizePixel=0;p.Parent=g;local q=Instance.new("Frame")q.Size=UDim2.new(1,0,0,1)q.Position=UDim2.new(0,0,1,-1)q.BackgroundColor3=k.Border;q.BackgroundTransparency=0.8;q.BorderSizePixel=0;q.Parent=p;m("Borders",q,"BackgroundColor3")local q=Instance.new("ImageLabel")q.Name="BrandLogo";q.Size=UDim2.new(0,32,0,32)q.Position=UDim2.new(0,16,0.5,0)q.AnchorPoint=Vector2.new(0,0.5)q.BackgroundTransparency=1;q.Image=i;q.Parent=p;local r=Instance.new("UICorner")r.CornerRadius=UDim.new(0,8)r.Parent=q;local q=Instance.new("TextLabel")q.Name="TitleLabel";q.Size=UDim2.new(0,300,0,18)q.Position=UDim2.new(0,56,0,9)q.BackgroundTransparency=1;q.Font=Enum.Font.GothamBold;q.Text=j;q.TextColor3=k.Light;q.TextSize=14;q.TextXAlignment=Enum.TextXAlignment.Left;q.Parent=p;m("Lights",q,"TextColor3")local q=Instance.new("TextLabel")q.Name="SubtitleLabel";q.Size=UDim2.new(0,300,0,14)q.Position=UDim2.new(0,56,0,28)q.BackgroundTransparency=1;q.Font=Enum.Font.Gotham;q.Text=l;q.TextColor3=Color3.fromRGB(148,163,184)q.TextSize=10.5;q.TextXAlignment=Enum.TextXAlignment.Left;q.Parent=p;local l=Instance.new("Frame")l.Name="ControlsHolder";l.Size=UDim2.new(0,70,0,32)l.Position=UDim2.new(1,-16,0.5,0)l.AnchorPoint=Vector2.new(1,0.5)l.BackgroundTransparency=1;l.Parent=p;local q=Instance.new("UIListLayout")q.FillDirection=Enum.FillDirection.Horizontal;q.HorizontalAlignment=Enum.HorizontalAlignment.Right;q.VerticalAlignment=Enum.VerticalAlignment.Center;q.Padding=UDim.new(0,8)q.Parent=l;local q=Instance.new("ImageButton")q.Name="BtnMinimize";q.Size=UDim2.new(0,28,0,28)q.BackgroundColor3=Color3.fromRGB(255,255,255)q.BackgroundTransparency=0.92;q.Image=e.Minus;q.ImageColor3=Color3.fromRGB(180,180,190)q.Parent=l;local r=Instance.new("UICorner")r.CornerRadius=UDim.new(0,8)r.Parent=q;local r=Instance.new("ImageButton")r.Name="BtnClose";r.Size=UDim2.new(0,28,0,28)r.BackgroundColor3=Color3.fromRGB(239,68,68)r.BackgroundTransparency=0.85;r.Image=e.Close;r.ImageColor3=Color3.fromRGB(239,68,68)r.Parent=l;local l=Instance.new("UICorner")l.CornerRadius=UDim.new(0,8)l.Parent=r;h(g,p)local l=Instance.new("Frame")l.Name="BodyFrame";l.Size=UDim2.new(1,0,1,-52)l.Position=UDim2.new(0,0,0,52)l.BackgroundTransparency=1;l.Parent=g;local p=Instance.new("Frame")p.Name="Sidebar";p.Size=UDim2.new(0,180,1,0)p.BackgroundColor3=Color3.fromRGB(8,8,14)p.BackgroundTransparency=0.4;p.BorderSizePixel=0;p.Parent=l;local s=Instance.new("Frame")s.Size=UDim2.new(0,1,1,0)s.Position=UDim2.new(1,-1,0,0)s.BackgroundColor3=k.Border;s.BackgroundTransparency=0.85;s.BorderSizePixel=0;s.Parent=p;m("Borders",s,"BackgroundColor3")local s=Instance.new("ScrollingFrame")s.Name="TabsHolder";s.Size=UDim2.new(1,-16,1,-78)s.Position=UDim2.new(0,8,0,12)s.BackgroundTransparency=1;s.ScrollBarThickness=2;s.ScrollBarImageColor3=k.Accent;s.BorderSizePixel=0;s.CanvasSize=UDim2.new(0,0,0,0)s.Parent=p;local t=Instance.new("UIListLayout")t.FillDirection=Enum.FillDirection.Vertical;t.Padding=UDim.new(0,6)t.Parent=s;t:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()s.CanvasSize=UDim2.new(0,0,0,t.AbsoluteContentSize.Y+10)end)local t=Instance.new("Frame")t.Name="UserProfileBox";t.Size=UDim2.new(1,-16,0,52)t.Position=UDim2.new(0,8,1,-60)t.BackgroundColor3=Color3.fromRGB(12,12,18)t.BackgroundTransparency=0.3;t.Parent=p;local p=Instance.new("UICorner")p.CornerRadius=UDim.new(0,12)p.Parent=t;local p=Instance.new("UIStroke")p.Color=k.Border;p.Transparency=0.75;p.Parent=t;m("Borders",p,"Color")local p=Instance.new("ImageLabel")p.Name="UserAvatar";p.Size=UDim2.new(0,36,0,36)p.Position=UDim2.new(0,8,0.5,0)p.AnchorPoint=Vector2.new(0,0.5)p.BackgroundColor3=Color3.fromRGB(25,25,35)p.BackgroundTransparency=0.5;p.Image="rbxasset://textures/ui/GuiImagePlaceholder.png";p.Parent=t;local u=Instance.new("UICorner")u.CornerRadius=UDim.new(1,0)u.Parent=p;task.spawn(function()pcall(function()local a=Enum.ThumbnailType.HeadShot;local b=Enum.ThumbnailSize.Size100x100;local a,b=d:GetUserThumbnailAsync(f.UserId,a,b)if b and a then p.Image=a end end)end)local d=Instance.new("TextLabel")d.Name="DisplayNameLabel";d.Size=UDim2.new(1,-54,0,16)d.Position=UDim2.new(0,50,0,9)d.BackgroundTransparency=1;d.Font=Enum.Font.GothamBold;d.Text=f.DisplayName;d.TextColor3=k.Light;d.TextSize=11.5;d.TextXAlignment=Enum.TextXAlignment.Left;d.TextTruncate=Enum.TextTruncate.AtEnd;d.Parent=t;m("Lights",d,"TextColor3")local d=Instance.new("TextLabel")d.Name="UsernameLabel";d.Size=UDim2.new(1,-54,0,14)d.Position=UDim2.new(0,50,0,26)d.BackgroundTransparency=1;d.Font=Enum.Font.Code;d.Text="@"..f.Name;d.TextColor3=Color3.fromRGB(148,163,184)d.TextSize=9.5;d.TextXAlignment=Enum.TextXAlignment.Left;d.TextTruncate=Enum.TextTruncate.AtEnd;d.Parent=t;local d=Instance.new("Frame")d.Name="ContentHolder";d.Size=UDim2.new(1,-180,1,0)d.Position=UDim2.new(0,180,0,0)d.BackgroundTransparency=1;d.ClipsDescendants=true;d.Parent=l;local f=Instance.new("Frame")f.Name="CloseDialogOverlay";f.Size=UDim2.new(1,0,1,0)f.BackgroundColor3=Color3.fromRGB(6,6,9)f.BackgroundTransparency=0.2;f.ZIndex=50;f.Visible=false;f.Parent=g;local l=Instance.new("Frame")l.Name="DialogCard";l.Size=UDim2.new(0,380,0,210)l.Position=UDim2.new(0.5,0,0.5,0)l.AnchorPoint=Vector2.new(0.5,0.5)l.BackgroundColor3=Color3.fromRGB(14,14,22)l.BorderSizePixel=0;l.ZIndex=51;l.Parent=f;local p=Instance.new("UICorner")p.CornerRadius=UDim.new(0,18)p.Parent=l;local p=Instance.new("UIStroke")p.Color=k.Border;p.Thickness=1.5;p.Parent=l;m("Borders",p,"Color")local p=Instance.new("TextLabel")p.Size=UDim2.new(1,-30,0,24)p.Position=UDim2.new(0,15,0,16)p.BackgroundTransparency=1;p.Font=Enum.Font.GothamBold;p.Text="Tùy Chọn Đóng Giao Diện";p.TextColor3=k.Light;p.TextSize=16;p.ZIndex=52;p.Parent=l;m("Lights",p,"TextColor3")local p=Instance.new("TextLabel")p.Size=UDim2.new(1,-30,0,36)p.Position=UDim2.new(0,15,0,42)p.BackgroundTransparency=1;p.Font=Enum.Font.Gotham;p.Text="Bạn có muốn thu nhỏ giao diện thành biểu tượng nổi trên màn hình hay thoát hoàn toàn script?";p.TextColor3=Color3.fromRGB(148,163,184)p.TextSize=12;p.TextWrapped=true;p.ZIndex=52;p.Parent=l;local p=Instance.new("TextButton")p.Size=UDim2.new(1,-30,0,38)p.Position=UDim2.new(0,15,0,88)p.BackgroundColor3=k.Accent;p.BackgroundTransparency=0.25;p.Font=Enum.Font.GothamBold;p.Text="⚡  Thu Nhỏ Thành Nút Nổi";p.TextColor3=Color3.fromRGB(10,10,16)p.TextSize=13;p.ZIndex=52;p.Parent=l;m("Accents",p,"BackgroundColor3")local t=Instance.new("UICorner")t.CornerRadius=UDim.new(0,10)t.Parent=p;local t=Instance.new("TextButton")t.Size=UDim2.new(0.58,-18,0,34)t.Position=UDim2.new(0,15,0,134)t.BackgroundColor3=Color3.fromRGB(239,68,68)t.BackgroundTransparency=0.35;t.Font=Enum.Font.GothamBold;t.Text="🚪  Đóng Hoàn Toàn";t.TextColor3=Color3.fromRGB(255,255,255)t.TextSize=12;t.ZIndex=52;t.Parent=l;local u=Instance.new("UICorner")u.CornerRadius=UDim.new(0,10)u.Parent=t;local u=Instance.new("TextButton")u.Size=UDim2.new(0.42,-18,0,34)u.Position=UDim2.new(0.58,3,0,134)u.BackgroundColor3=Color3.fromRGB(255,255,255)u.BackgroundTransparency=0.92;u.Font=Enum.Font.GothamMedium;u.Text="Hủy Bỏ";u.TextColor3=Color3.fromRGB(160,160,175)u.TextSize=12;u.ZIndex=52;u.Parent=l;local v=Instance.new("UICorner")v.CornerRadius=UDim.new(0,10)v.Parent=u;local function v()f.Visible=true;f.BackgroundTransparency=1;l.Position=UDim2.new(0.5,0,0.5,20)l.Size=UDim2.new(0,350,0,190)b:Create(f,TweenInfo.new(0.25),{BackgroundTransparency=0.25}):Play()b:Create(l,TweenInfo.new(0.3,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Position=UDim2.new(0.5,0,0.5,0),Size=UDim2.new(0,380,0,210)}):Play()end;local function w()b:Create(f,TweenInfo.new(0.2),{BackgroundTransparency=1}):Play()b:Create(l,TweenInfo.new(0.2,Enum.EasingStyle.Quart,Enum.EasingDirection.In),{Position=UDim2.new(0.5,0,0.5,20)}):Play()task.wait(0.22)f.Visible=false end;r.MouseButton1Click:Connect(v)u.MouseButton1Click:Connect(w)local f=Instance.new("Frame")f.Name="FloatingWidget";f.Size=UDim2.new(0,52,0,52)f.Position=UDim2.new(0.92,-30,0.15,0)f.BackgroundColor3=k.BgCard;f.BackgroundTransparency=0.1;f.Visible=false;f.ZIndex=60;f.Parent=o;m("Cards",f,"BackgroundColor3")local l=Instance.new("UICorner")l.CornerRadius=UDim.new(1,0)l.Parent=f;local l=Instance.new("UIStroke")l.Color=k.Bright;l.Thickness=2;l.Parent=f;m("Borders",l,"Color")local l=Instance.new("ImageLabel")l.Size=UDim2.new(1,-12,1,-12)l.Position=UDim2.new(0.5,0,0.5,0)l.AnchorPoint=Vector2.new(0.5,0.5)l.BackgroundTransparency=1;l.Image=i;l.ZIndex=61;l.Parent=f;local i=Instance.new("UICorner")i.CornerRadius=UDim.new(1,0)i.Parent=l;h(f,f)local h=Instance.new("Frame")h.Name="SubButtonsContainer";h.Size=UDim2.new(0,180,0,110)h.Position=UDim2.new(0,-190,0.5,-55)h.BackgroundTransparency=1;h.ZIndex=62;h.Visible=false;h.Parent=f;local i=Instance.new("UIListLayout")i.FillDirection=Enum.FillDirection.Vertical;i.Padding=UDim.new(0,8)i.Parent=h;local i=Instance.new("TextButton")i.Name="SubBtnOpen";i.Size=UDim2.new(1,0,0,48)i.BackgroundColor3=Color3.fromRGB(14,14,22)i.BackgroundTransparency=0.15;i.Text="";i.ZIndex=63;i.Parent=h;local r=Instance.new("UICorner")r.CornerRadius=UDim.new(0,12)r.Parent=i;local r=Instance.new("UIStroke")r.Color=k.Border;r.Thickness=1.2;r.Parent=i;m("Borders",r,"Color")local r=Instance.new("ImageLabel")r.Size=UDim2.new(0,22,0,22)r.Position=UDim2.new(0,10,0.5,0)r.AnchorPoint=Vector2.new(0,0.5)r.BackgroundTransparency=1;r.Image=e.External;r.ImageColor3=k.Bright;r.ZIndex=64;r.Parent=i;m("Borders",r,"ImageColor3")local r=Instance.new("TextLabel")r.Size=UDim2.new(1,-40,0,16)r.Position=UDim2.new(0,38,0,7)r.BackgroundTransparency=1;r.Font=Enum.Font.GothamBold;r.Text="Mở Giao Diện";r.TextColor3=k.Light;r.TextSize=12;r.TextXAlignment=Enum.TextXAlignment.Left;r.ZIndex=64;r.Parent=i;m("Lights",r,"TextColor3")local m=Instance.new("TextLabel")m.Size=UDim2.new(1,-40,0,14)m.Position=UDim2.new(0,38,0,24)m.BackgroundTransparency=1;m.Font=Enum.Font.Gotham;m.Text="Khôi phục cửa sổ Hub";m.TextColor3=Color3.fromRGB(148,163,184)m.TextSize=9.5;m.TextXAlignment=Enum.TextXAlignment.Left;m.ZIndex=64;m.Parent=i;local m=Instance.new("TextButton")m.Name="SubBtnDestroy";m.Size=UDim2.new(1,0,0,48)m.BackgroundColor3=Color3.fromRGB(24,10,12)m.BackgroundTransparency=0.15;m.Text="";m.ZIndex=63;m.Parent=h;local r=Instance.new("UICorner")r.CornerRadius=UDim.new(0,12)r.Parent=m;local r=Instance.new("UIStroke")r.Color=Color3.fromRGB(239,68,68)r.Thickness=1.2;r.Parent=m;local r=Instance.new("ImageLabel")r.Size=UDim2.new(0,22,0,22)r.Position=UDim2.new(0,10,0.5,0)r.AnchorPoint=Vector2.new(0,0.5)r.BackgroundTransparency=1;r.Image=e.Exit;r.ImageColor3=Color3.fromRGB(239,68,68)r.ZIndex=64;r.Parent=m;local r=Instance.new("TextLabel")r.Size=UDim2.new(1,-40,0,16)r.Position=UDim2.new(0,38,0,7)r.BackgroundTransparency=1;r.Font=Enum.Font.GothamBold;r.Text="Thoát Hoàn Toàn";r.TextColor3=Color3.fromRGB(254,202,202)r.TextSize=12;r.TextXAlignment=Enum.TextXAlignment.Left;r.ZIndex=64;r.Parent=m;local r=Instance.new("TextLabel")r.Size=UDim2.new(1,-40,0,14)r.Position=UDim2.new(0,38,0,24)r.BackgroundTransparency=1;r.Font=Enum.Font.Gotham;r.Text="Xóa GUI và dọn bộ nhớ";r.TextColor3=Color3.fromRGB(180,130,130)r.TextSize=9.5;r.TextXAlignment=Enum.TextXAlignment.Left;r.ZIndex=64;r.Parent=m;local function r()w()b:Create(g,TweenInfo.new(0.35,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size=UDim2.new(0,100,0,60),Position=f.Position,BackgroundTransparency=1}):Play()task.wait(0.36)g.Visible=false;f.Visible=true;f.Size=UDim2.new(0,10,0,10)b:Create(f,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size=UDim2.new(0,52,0,52)}):Play()end;local function u()h.Visible=false;b:Create(f,TweenInfo.new(0.25,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size=UDim2.new(0,10,0,10)}):Play()task.wait(0.26)f.Visible=false;g.Visible=true;g.Size=UDim2.new(0,300,0,180)g.Position=UDim2.new(0.5,0,0.5,0)g.BackgroundTransparency=0.05;b:Create(g,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size=UDim2.new(0,680,0,440)}):Play()end;local function v()w()b:Create(g,TweenInfo.new(0.3,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size=UDim2.new(0,200,0,100),BackgroundTransparency=1}):Play()task.wait(0.32)o:Destroy()end;p.MouseButton1Click:Connect(r)q.MouseButton1Click:Connect(r)t.MouseButton1Click:Connect(v)local p=false;l.InputBegan:Connect(function(a)if a.UserInputType==Enum.UserInputType.MouseButton1 or a.UserInputType==Enum.UserInputType.Touch then b:Create(f,TweenInfo.new(0.12,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),{Size=UDim2.new(0,60,0,60)}):Play()task.delay(0.12,function()b:Create(f,TweenInfo.new(0.15,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size=UDim2.new(0,52,0,52)}):Play()end)p=not p;if p then h.Visible=true;h.Position=UDim2.new(0,-100,0.5,-55)b:Create(h,TweenInfo.new(0.3,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Position=UDim2.new(0,-190,0.5,-55)}):Play()else b:Create(h,TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{Position=UDim2.new(0,-100,0.5,-55)}):Play()task.delay(0.2,function()if not p then h.Visible=false end end)end end end)i.MouseButton1Click:Connect(function()p=false;u()end)m.MouseButton1Click:Connect(function()o:Destroy()end)local f={ScreenGui=o,MainCard=g,ContentHolder=d,TabsHolder=s,Tabs={},ActiveTab=nil}function f:CreateTab(g)g=g or{}local h=g.Name or"Tab Mới";local g=g.Icon or"Terminal";local i=e[g]or e.Terminal;if g=="view_in_ar"or g=="Terminal"then i=e.Terminal elseif g=="palette"then i=e.Palette elseif g=="settings"then i=e.Settings elseif g=="notifications_active"then i=e.Bell end;local e=Instance.new("TextButton")e.Name="Tab_"..h;e.Size=UDim2.new(1,0,0,36)e.BackgroundColor3=Color3.fromRGB(20,20,30)e.BackgroundTransparency=0.9;e.Text="";e.Parent=s;local g=Instance.new("UICorner")g.CornerRadius=UDim.new(0,10)g.Parent=e;local g=Instance.new("UIStroke")g.Color=k.Border;g.Transparency=1;g.Parent=e;local g=Instance.new("ImageLabel")g.Size=UDim2.new(0,18,0,18)g.Position=UDim2.new(0,10,0.5,0)g.AnchorPoint=Vector2.new(0,0.5)g.BackgroundTransparency=1;g.Image=i;g.ImageColor3=Color3.fromRGB(148,163,184)g.Parent=e;local g=Instance.new("TextLabel")g.Size=UDim2.new(1,-38,1,0)g.Position=UDim2.new(0,34,0,0)g.BackgroundTransparency=1;g.Font=Enum.Font.GothamMedium;g.Text=h;g.TextColor3=Color3.fromRGB(148,163,184)g.TextSize=12;g.TextXAlignment=Enum.TextXAlignment.Left;g.Parent=e;local g=Instance.new("ScrollingFrame")g.Name="Page_"..h;g.Size=UDim2.new(1,-20,1,-20)g.Position=UDim2.new(0,10,0,10)g.BackgroundTransparency=1;g.ScrollBarThickness=3;g.ScrollBarImageColor3=k.Accent;g.BorderSizePixel=0;g.CanvasSize=UDim2.new(0,0,0,0)g.Visible=false;g.Parent=d;local d=Instance.new("UIListLayout")d.FillDirection=Enum.FillDirection.Vertical;d.Padding=UDim.new(0,8)d.Parent=g;d:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()g.CanvasSize=UDim2.new(0,0,0,d.AbsoluteContentSize.Y+15)end)local d={Button=e,Page=g,Name=h}local function h()for a,a in pairs(f.Tabs)do a.Page.Visible=false;a.Button.BackgroundTransparency=0.9;a.Button.TabBtnStroke.Transparency=1;a.Button.TabBtnIcon.ImageColor3=Color3.fromRGB(148,163,184)a.Button.TabBtnText.TextColor3=Color3.fromRGB(148,163,184)end;g.Visible=true;e.BackgroundTransparency=0.2;e.BackgroundColor3=k.Accent;e.TabBtnStroke.Transparency=0.4;e.TabBtnStroke.Color=k.Bright;e.TabBtnIcon.ImageColor3=Color3.fromRGB(10,10,16)e.TabBtnText.TextColor3=Color3.fromRGB(10,10,16)f.ActiveTab=d end;e.MouseButton1Click:Connect(h)function d:CreateButton(a)a=a or{}local c=a.Name or"Nút Bấm";local d=a.Description or"";local a=a.Callback or function()end;local e=Instance.new("Frame")e.Size=UDim2.new(1,-6,0,d~=""and 52 or 40)e.BackgroundColor3=k.BgInner;e.BackgroundTransparency=0.35;e.Parent=g;local f=Instance.new("UICorner")f.CornerRadius=UDim.new(0,10)f.Parent=e;local f=Instance.new("UIStroke")f.Color=k.Border;f.Transparency=0.75;f.Parent=e;local f=Instance.new("TextLabel")f.Size=UDim2.new(1,-85,0,18)f.Position=UDim2.new(0,14,0,d~=""and 8 or 11)f.BackgroundTransparency=1;f.Font=Enum.Font.GothamBold;f.Text=c;f.TextColor3=Color3.fromRGB(248,250,252)f.TextSize=13;f.TextXAlignment=Enum.TextXAlignment.Left;f.Parent=e;if d~=""then local a=Instance.new("TextLabel")a.Size=UDim2.new(1,-85,0,14)a.Position=UDim2.new(0,14,0,28)a.BackgroundTransparency=1;a.Font=Enum.Font.Gotham;a.Text=d;a.TextColor3=Color3.fromRGB(148,163,184)a.TextSize=10.5;a.TextXAlignment=Enum.TextXAlignment.Left;a.Parent=e end;local c=Instance.new("TextButton")c.Size=UDim2.new(0,60,0,26)c.Position=UDim2.new(1,-70,0.5,0)c.AnchorPoint=Vector2.new(0,0.5)c.BackgroundColor3=k.Accent;c.BackgroundTransparency=0.2;c.Font=Enum.Font.GothamBold;c.Text="Chạy";c.TextColor3=Color3.fromRGB(10,10,16)c.TextSize=11.5;c.Parent=e;local d=Instance.new("UICorner")d.CornerRadius=UDim.new(0,7)d.Parent=c;c.MouseButton1Click:Connect(function()b:Create(c,TweenInfo.new(0.1),{Size=UDim2.new(0,54,0,24)}):Play()task.delay(0.1,function()b:Create(c,TweenInfo.new(0.15,Enum.EasingStyle.Back),{Size=UDim2.new(0,60,0,26)}):Play()end)pcall(a)end)return e end;function d:CreateToggle(a)a=a or{}local c=a.Name or"Toggle";local d=a.Description or"";local e=a.Default or false;local a=a.Callback or function()end;local f=Instance.new("Frame")f.Size=UDim2.new(1,-6,0,d~=""and 52 or 40)f.BackgroundColor3=k.BgInner;f.BackgroundTransparency=0.35;f.Parent=g;local g=Instance.new("UICorner")g.CornerRadius=UDim.new(0,10)g.Parent=f;local g=Instance.new("UIStroke")g.Color=k.Border;g.Transparency=0.75;g.Parent=f;local g=Instance.new("TextLabel")g.Size=UDim2.new(1,-70,0,18)g.Position=UDim2.new(0,14,0,d~=""and 8 or 11)g.BackgroundTransparency=1;g.Font=Enum.Font.GothamBold;g.Text=c;g.TextColor3=Color3.fromRGB(248,250,252)g.TextSize=13;g.TextXAlignment=Enum.TextXAlignment.Left;g.Parent=f;if d~=""then local a=Instance.new("TextLabel")a.Size=UDim2.new(1,-70,0,14)a.Position=UDim2.new(0,14,0,28)a.BackgroundTransparency=1;a.Font=Enum.Font.Gotham;a.Text=d;a.TextColor3=Color3.fromRGB(148,163,184)a.TextSize=10.5;a.TextXAlignment=Enum.TextXAlignment.Left;a.Parent=f end;local c=Instance.new("TextButton")c.Size=UDim2.new(0,42,0,22)c.Position=UDim2.new(1,-54,0.5,0)c.AnchorPoint=Vector2.new(0,0.5)c.BackgroundColor3=e and k.Accent or Color3.fromRGB(25,25,35)c.Text="";c.Parent=f;local d=Instance.new("UICorner")d.CornerRadius=UDim.new(1,0)d.Parent=c;local d=Instance.new("Frame")d.Size=UDim2.new(0,16,0,16)d.Position=UDim2.new(0,e and 23 or 3,0.5,0)d.AnchorPoint=Vector2.new(0,0.5)d.BackgroundColor3=Color3.fromRGB(255,255,255)d.Parent=c;local g=Instance.new("UICorner")g.CornerRadius=UDim.new(1,0)g.Parent=d;local function g()b:Create(c,TweenInfo.new(0.2),{BackgroundColor3=e and k.Accent or Color3.fromRGB(25,25,35)}):Play()b:Create(d,TweenInfo.new(0.2,Enum.EasingStyle.Quart,Enum.EasingDirection.Out),{Position=UDim2.new(0,e and 23 or 3,0.5,0)}):Play()pcall(a,e)end;c.MouseButton1Click:Connect(function()e=not e;g()end)return f end;function d:CreateSlider(a)a=a or{}local b=a.Name or"Slider";local d=a.Min or 0;local e=a.Max or 100;local f=a.Default or d;local h=a.Rounding or 0;local a=a.Callback or function()end;local i=Instance.new("Frame")i.Size=UDim2.new(1,-6,0,56)i.BackgroundColor3=k.BgInner;i.BackgroundTransparency=0.35;i.Parent=g;local g=Instance.new("UICorner")g.CornerRadius=UDim.new(0,10)g.Parent=i;local g=Instance.new("UIStroke")g.Color=k.Border;g.Transparency=0.75;g.Parent=i;local g=Instance.new("TextLabel")g.Size=UDim2.new(0.7,0,0,18)g.Position=UDim2.new(0,14,0,8)g.BackgroundTransparency=1;g.Font=Enum.Font.GothamBold;g.Text=b;g.TextColor3=Color3.fromRGB(248,250,252)g.TextSize=13;g.TextXAlignment=Enum.TextXAlignment.Left;g.Parent=i;local b=Instance.new("TextLabel")b.Size=UDim2.new(0.3,-14,0,18)b.Position=UDim2.new(0.7,0,0,8)b.BackgroundTransparency=1;b.Font=Enum.Font.Code;b.Text=tostring(f)b.TextColor3=k.Light;b.TextSize=12;b.TextXAlignment=Enum.TextXAlignment.Right;b.Parent=i;local g=Instance.new("TextButton")g.Size=UDim2.new(1,-28,0,6)g.Position=UDim2.new(0,14,0,36)g.BackgroundColor3=Color3.fromRGB(25,25,35)g.Text="";g.AutoButtonColor=false;g.Parent=i;local j=Instance.new("UICorner")j.CornerRadius=UDim.new(1,0)j.Parent=g;local j=math.clamp((f-d)/(e-d),0,1)local l=Instance.new("Frame")l.Size=UDim2.new(j,0,1,0)l.BackgroundColor3=k.Accent;l.BorderSizePixel=0;l.Parent=g;local j=Instance.new("UICorner")j.CornerRadius=UDim.new(1,0)j.Parent=l;local function j(c)local c=math.clamp((c.X-g.AbsolutePosition.X)/g.AbsoluteSize.X,0,1)local d=d+(e-d)*c;if h==0 then f=math.floor(d+0.5)else f=math.floor(d*(10^h)+0.5)/(10^h)end;b.Text=tostring(f)l.Size=UDim2.new(c,0,1,0)pcall(a,f)end;local a=false;g.InputBegan:Connect(function(b)if b.UserInputType==Enum.UserInputType.MouseButton1 or b.UserInputType==Enum.UserInputType.Touch then a=true;j(b.Position)end end)c.InputEnded:Connect(function(b)if b.UserInputType==Enum.UserInputType.MouseButton1 or b.UserInputType==Enum.UserInputType.Touch then a=false end end)c.InputChanged:Connect(function(b)if a and(b.UserInputType==Enum.UserInputType.MouseMovement or b.UserInputType==Enum.UserInputType.Touch)then j(b.Position)end end)return i end;function d:CreateDropdown(a)a=a or{}local b=a.Name or"Dropdown";local c=a.Options or{}local d=a.Default or c[1]or"";local a=a.Callback or function()end;local e=Instance.new("Frame")e.Size=UDim2.new(1,-6,0,44)e.BackgroundColor3=k.BgInner;e.BackgroundTransparency=0.35;e.Parent=g;local f=Instance.new("UICorner")f.CornerRadius=UDim.new(0,10)f.Parent=e;local f=Instance.new("UIStroke")f.Color=k.Border;f.Transparency=0.75;f.Parent=e;local f=Instance.new("TextLabel")f.Size=UDim2.new(0.5,0,1,0)f.Position=UDim2.new(0,14,0,0)f.BackgroundTransparency=1;f.Font=Enum.Font.GothamBold;f.Text=b;f.TextColor3=Color3.fromRGB(248,250,252)f.TextSize=13;f.TextXAlignment=Enum.TextXAlignment.Left;f.Parent=e;local b=Instance.new("TextButton")b.Size=UDim2.new(0.45,0,0,28)b.Position=UDim2.new(1,-14,0.5,0)b.AnchorPoint=Vector2.new(1,0.5)b.BackgroundColor3=Color3.fromRGB(25,25,35)b.Font=Enum.Font.GothamMedium;b.Text=tostring(d).."  ▼";b.TextColor3=k.Light;b.TextSize=11;b.Parent=e;local f=Instance.new("UICorner")f.CornerRadius=UDim.new(0,8)f.Parent=b;local f=1;b.MouseButton1Click:Connect(function()f=f+1;if f>#c then f=1 end;d=c[f]or"";b.Text=tostring(d).."  ▼";pcall(a,d)end)return e end;function d:CreateInput(a)a=a or{}local b=a.Name or"Input";local c=a.Placeholder or"Nhập văn bản...";local a=a.Callback or function()end;local d=Instance.new("Frame")d.Size=UDim2.new(1,-6,0,44)d.BackgroundColor3=k.BgInner;d.BackgroundTransparency=0.35;d.Parent=g;local e=Instance.new("UICorner")e.CornerRadius=UDim.new(0,10)e.Parent=d;local e=Instance.new("UIStroke")e.Color=k.Border;e.Transparency=0.75;e.Parent=d;local e=Instance.new("TextLabel")e.Size=UDim2.new(0.4,0,1,0)e.Position=UDim2.new(0,14,0,0)e.BackgroundTransparency=1;e.Font=Enum.Font.GothamBold;e.Text=b;e.TextColor3=Color3.fromRGB(248,250,252)e.TextSize=13;e.TextXAlignment=Enum.TextXAlignment.Left;e.Parent=d;local b=Instance.new("TextBox")b.Size=UDim2.new(0.55,-14,0,28)b.Position=UDim2.new(1,-14,0.5,0)b.AnchorPoint=Vector2.new(1,0.5)b.BackgroundColor3=Color3.fromRGB(25,25,35)b.Font=Enum.Font.Gotham;b.PlaceholderText=c;b.PlaceholderColor3=Color3.fromRGB(120,120,135)b.Text="";b.TextColor3=Color3.fromRGB(255,255,255)b.TextSize=11.5;b.ClearTextOnFocus=false;b.Parent=d;local c=Instance.new("UICorner")c.CornerRadius=UDim.new(0,8)c.Parent=b;b.FocusLost:Connect(function(c)pcall(a,b.Text)end)return d end;function d:BuildThemeSection()local b=Instance.new("TextLabel")b.Size=UDim2.new(1,0,0,28)b.BackgroundTransparency=1;b.Font=Enum.Font.GothamBold;b.Text="🎨 BỘ SƯU TẬP GIAO DIỆN ĐA SẮC (THEME COLOR)";b.TextColor3=k.Light;b.TextSize=13.5;b.TextXAlignment=Enum.TextXAlignment.Left;b.Parent=g;local b=Instance.new("TextLabel")b.Size=UDim2.new(1,0,0,24)b.BackgroundTransparency=1;b.Font=Enum.Font.Gotham;b.Text="Chọn màu chủ đạo ưa thích bên dưới. Hệ thống sẽ tự động ghi nhớ và khôi phục ở những lần chơi sau:";b.TextColor3=Color3.fromRGB(148,163,184)b.TextSize=11;b.TextWrapped=true;b.TextXAlignment=Enum.TextXAlignment.Left;b.Parent=g;local b={{name="Luxury Gold",desc="Vàng Kim Hoàng Gia (Mặc định)",color=Color3.fromRGB(245,158,11)},{name="Cyber Cyan",desc="Xanh Điện Quang Công Nghệ",color=Color3.fromRGB(6,182,212)},{name="Ruby Crimson",desc="Đỏ Huyết Tinh Quyền Lực",color=Color3.fromRGB(239,68,68)},{name="Emerald Green",desc="Xanh Ngọc Lục Bảo Tinh Tế",color=Color3.fromRGB(16,185,129)},{name="Amethyst Purple",desc="Tím Thạch Anh Huyền Ảo",color=Color3.fromRGB(168,85,247)}}for b,b in ipairs(b)do local c=Instance.new("Frame")c.Size=UDim2.new(1,-6,0,48)c.BackgroundColor3=k.BgInner;c.BackgroundTransparency=0.35;c.Parent=g;local d=Instance.new("UICorner")d.CornerRadius=UDim.new(0,10)d.Parent=c;local d=Instance.new("UIStroke")d.Color=b.color;d.Transparency=0.7;d.Parent=c;local d=Instance.new("Frame")d.Size=UDim2.new(0,14,0,14)d.Position=UDim2.new(0,14,0.5,0)d.AnchorPoint=Vector2.new(0,0.5)d.BackgroundColor3=b.color;d.Parent=c;local e=Instance.new("UICorner")e.CornerRadius=UDim.new(1,0)e.Parent=d;local d=Instance.new("TextLabel")d.Size=UDim2.new(1,-160,0,16)d.Position=UDim2.new(0,36,0,8)d.BackgroundTransparency=1;d.Font=Enum.Font.GothamBold;d.Text=b.name;d.TextColor3=Color3.fromRGB(248,250,252)d.TextSize=13;d.TextXAlignment=Enum.TextXAlignment.Left;d.Parent=c;local d=Instance.new("TextLabel")d.Size=UDim2.new(1,-160,0,14)d.Position=UDim2.new(0,36,0,26)d.BackgroundTransparency=1;d.Font=Enum.Font.Gotham;d.Text=b.desc;d.TextColor3=Color3.fromRGB(148,163,184)d.TextSize=10.5;d.TextXAlignment=Enum.TextXAlignment.Left;d.Parent=c;local d=Instance.new("TextButton")d.Size=UDim2.new(0,75,0,28)d.Position=UDim2.new(1,-85,0.5,0)d.AnchorPoint=Vector2.new(0,0.5)d.BackgroundColor3=b.color;d.BackgroundTransparency=0.2;d.Font=Enum.Font.GothamBold;d.Text="Áp Dụng";d.TextColor3=Color3.fromRGB(10,10,16)d.TextSize=11.5;d.Parent=c;local c=Instance.new("UICorner")c.CornerRadius=UDim.new(0,8)c.Parent=d;d.MouseButton1Click:Connect(function()n(b.name)a:Notification({Title="Đổi Theme Thành Công!",Content="Đã lưu và áp dụng giao diện: "..b.name,Icon="palette",Duration=3})end)end end;function d:BuildConfigSection()self:BuildThemeSection()end;table.insert(f.Tabs,d)if#f.Tabs==1 then h()end;return d end;function f:CreateHomeTab(b)b=b or{}local c=self:CreateTab({Name="Trang Chủ",Icon="Home"})local d=Instance.new("Frame")d.Size=UDim2.new(1,-6,0,110)d.BackgroundColor3=k.BgInner;d.BackgroundTransparency=0.35;d.Parent=c.Page;local e=Instance.new("UICorner")e.CornerRadius=UDim.new(0,12)e.Parent=d;local e=Instance.new("UIStroke")e.Color=k.Border;e.Transparency=0.6;e.Parent=d;local e=Instance.new("TextLabel")e.Size=UDim2.new(1,-20,0,22)e.Position=UDim2.new(0,14,0,12)e.BackgroundTransparency=1;e.Font=Enum.Font.GothamBold;e.Text="🌸 Chào mừng bạn đến với "..j.."!";e.TextColor3=k.Light;e.TextSize=14;e.TextXAlignment=Enum.TextXAlignment.Left;e.Parent=d;local e=Instance.new("TextLabel")e.Size=UDim2.new(1,-28,0,36)e.Position=UDim2.new(0,14,0,38)e.BackgroundTransparency=1;e.Font=Enum.Font.Gotham;e.Text="Hệ thống tổng hợp script Roblox VIP độc quyền. Nhấn sang tab 'ScriptOpener' để chọn và thực thi các tựa game yêu thích.";e.TextColor3=Color3.fromRGB(148,163,184)e.TextSize=11.5;e.TextWrapped=true;e.TextXAlignment=Enum.TextXAlignment.Left;e.Parent=d;if b.DiscordInvite then local c=Instance.new("TextButton")c.Size=UDim2.new(0,140,0,24)c.Position=UDim2.new(0,14,0,78)c.BackgroundColor3=Color3.fromRGB(88,101,242)c.Font=Enum.Font.GothamBold;c.Text="Tham Gia Discord";c.TextColor3=Color3.fromRGB(255,255,255)c.TextSize=11;c.Parent=d;local d=Instance.new("UICorner")d.CornerRadius=UDim.new(0,6)d.Parent=c;c.MouseButton1Click:Connect(function()if setclipboard then setclipboard("https://discord.gg/"..tostring(b.DiscordInvite))a:Notification({Title="Discord Invite",Content="Đã sao chép link Discord vào bộ nhớ tạm!",Duration=3})end end)end;return c end;return f end;function a:Notification(a)a=a or{}local c=a.Title or"Cao Tuấn Anh";local d=a.Content or"";local a=a.Duration or 3.5;local f=g:FindFirstChild("CaoTuanAnh_ScriptHubGUI")if not f then return end;local g=f:FindFirstChild("ToastContainer")if not g then g=Instance.new("Frame")g.Name="ToastContainer";g.Size=UDim2.new(0,260,0.8,0)g.Position=UDim2.new(1,-280,0,20)g.BackgroundTransparency=1;g.Parent=f;local a=Instance.new("UIListLayout")a.FillDirection=Enum.FillDirection.Vertical;a.VerticalAlignment=Enum.VerticalAlignment.Top;a.Padding=UDim.new(0,8)a.Parent=g end;local f=Instance.new("Frame")f.Size=UDim2.new(1,0,0,54)f.BackgroundColor3=k.BgCard;f.BackgroundTransparency=0.1;f.Position=UDim2.new(1,40,0,0)f.Parent=g;local g=Instance.new("UICorner")g.CornerRadius=UDim.new(0,12)g.Parent=f;local g=Instance.new("UIStroke")g.Color=k.Bright;g.Thickness=1.2;g.Parent=f;local g=Instance.new("ImageLabel")g.Size=UDim2.new(0,22,0,22)g.Position=UDim2.new(0,12,0.5,0)g.AnchorPoint=Vector2.new(0,0.5)g.BackgroundTransparency=1;g.Image=e.Bell;g.ImageColor3=k.Bright;g.Parent=f;local e=Instance.new("TextLabel")e.Size=UDim2.new(1,-44,0,16)e.Position=UDim2.new(0,40,0,10)e.BackgroundTransparency=1;e.Font=Enum.Font.GothamBold;e.Text=c;e.TextColor3=k.Light;e.TextSize=12;e.TextXAlignment=Enum.TextXAlignment.Left;e.Parent=f;local c=Instance.new("TextLabel")c.Size=UDim2.new(1,-44,0,18)c.Position=UDim2.new(0,40,0,26)c.BackgroundTransparency=1;c.Font=Enum.Font.Gotham;c.Text=d;c.TextColor3=Color3.fromRGB(180,190,205)c.TextSize=10.5;c.TextXAlignment=Enum.TextXAlignment.Left;c.TextTruncate=Enum.TextTruncate.AtEnd;c.Parent=f;f.Position=UDim2.new(1,60,0,0)b:Create(f,TweenInfo.new(0.3,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Position=UDim2.new(0,0,0,0)}):Play()task.delay(a,function()if f and f.Parent then b:Create(f,TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.In),{Position=UDim2.new(1,60,0,0),BackgroundTransparency=1}):Play()task.wait(0.32)f:Destroy()end end)end;return a
+local UIScriptHub = {}
+UIScriptHub.__index = UIScriptHub
+
+-- ================= SERVICES =================
+local TweenService = game:GetService("TweenService")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+local HttpService = game:GetService("HttpService")
+
+local LocalPlayer = Players.LocalPlayer
+
+-- UI Parent an toàn cho mọi Executor
+local TargetGuiParent
+local successCore, _ = pcall(function()
+    local test = CoreGui.Name
+    TargetGuiParent = CoreGui
+end)
+if not successCore or not TargetGuiParent then
+    TargetGuiParent = LocalPlayer:WaitForChild("PlayerGui")
+end
+
+-- ================= FULL LUCIDE ICONS (800+ ICONS TỪ FLUENT UI) =================
+local Icons = {
+    Logo         = "rbxassetid://80440647852304", -- Logo chính Cao Tuấn Anh
+    Home         = "rbxassetid://10709791000",
+    Terminal     = "rbxassetid://10734982144",
+    Sliders      = "rbxassetid://10734963400",
+    Palette      = "rbxassetid://10709791100",
+    Settings     = "rbxassetid://10734950309",
+    Play         = "rbxassetid://10734923549",
+    Check        = "rbxassetid://10709790644",
+    Close        = "rbxassetid://10747384394",
+    Exit         = "rbxassetid://10723434906",
+    External     = "rbxassetid://10723346684",
+    Info         = "rbxassetid://10723415903",
+    Bell         = "rbxassetid://10709775704",
+    Copy         = "rbxassetid://10709812159",
+    Minus        = "rbxassetid://10734896206",
+    User         = "rbxassetid://10747373176",
+    Key          = "rbxassetid://10723416652",
+    Shield       = "rbxassetid://10734951847",
+    ChevronRight = "rbxassetid://10709790387",
+    ["lucide-accessibility"] = "rbxassetid://10709751939",
+    ["lucide-activity"] = "rbxassetid://10709752035",
+    ["lucide-air-vent"] = "rbxassetid://10709752131",
+    ["lucide-airplay"] = "rbxassetid://10709752254",
+    ["lucide-alarm-check"] = "rbxassetid://10709752405",
+    ["lucide-alarm-clock"] = "rbxassetid://10709752630",
+    ["lucide-alarm-clock-off"] = "rbxassetid://10709752508",
+    ["lucide-alarm-minus"] = "rbxassetid://10709752732",
+    ["lucide-alarm-plus"] = "rbxassetid://10709752825",
+    ["lucide-album"] = "rbxassetid://10709752906",
+    ["lucide-alert-circle"] = "rbxassetid://10709752996",
+    ["lucide-alert-octagon"] = "rbxassetid://10709753064",
+    ["lucide-alert-triangle"] = "rbxassetid://10709753149",
+    ["lucide-align-center"] = "rbxassetid://10709753570",
+    ["lucide-align-center-horizontal"] = "rbxassetid://10709753272",
+    ["lucide-align-center-vertical"] = "rbxassetid://10709753421",
+    ["lucide-align-end-horizontal"] = "rbxassetid://10709753692",
+    ["lucide-align-end-vertical"] = "rbxassetid://10709753808",
+    ["lucide-align-horizontal-distribute-center"] = "rbxassetid://10747779791",
+    ["lucide-align-horizontal-distribute-end"] = "rbxassetid://10747784534",
+    ["lucide-align-horizontal-distribute-start"] = "rbxassetid://10709754118",
+    ["lucide-align-horizontal-justify-center"] = "rbxassetid://10709754204",
+    ["lucide-align-horizontal-justify-end"] = "rbxassetid://10709754317",
+    ["lucide-align-horizontal-justify-start"] = "rbxassetid://10709754436",
+    ["lucide-align-horizontal-space-around"] = "rbxassetid://10709754590",
+    ["lucide-align-horizontal-space-between"] = "rbxassetid://10709754749",
+    ["lucide-align-justify"] = "rbxassetid://10709759610",
+    ["lucide-align-left"] = "rbxassetid://10709759764",
+    ["lucide-align-right"] = "rbxassetid://10709759895",
+    ["lucide-align-start-horizontal"] = "rbxassetid://10709760051",
+    ["lucide-align-start-vertical"] = "rbxassetid://10709760244",
+    ["lucide-align-vertical-distribute-center"] = "rbxassetid://10709760351",
+    ["lucide-align-vertical-distribute-end"] = "rbxassetid://10709760434",
+    ["lucide-align-vertical-distribute-start"] = "rbxassetid://10709760612",
+    ["lucide-align-vertical-justify-center"] = "rbxassetid://10709760814",
+    ["lucide-align-vertical-justify-end"] = "rbxassetid://10709761003",
+    ["lucide-align-vertical-justify-start"] = "rbxassetid://10709761176",
+    ["lucide-align-vertical-space-around"] = "rbxassetid://10709761324",
+    ["lucide-align-vertical-space-between"] = "rbxassetid://10709761434",
+    ["lucide-anchor"] = "rbxassetid://10709761530",
+    ["lucide-angry"] = "rbxassetid://10709761629",
+    ["lucide-annoyed"] = "rbxassetid://10709761722",
+    ["lucide-aperture"] = "rbxassetid://10709761813",
+    ["lucide-apple"] = "rbxassetid://10709761889",
+    ["lucide-archive"] = "rbxassetid://10709762233",
+    ["lucide-archive-restore"] = "rbxassetid://10709762058",
+    ["lucide-armchair"] = "rbxassetid://10709762327",
+    ["lucide-arrow-big-down"] = "rbxassetid://10747796644",
+    ["lucide-arrow-big-left"] = "rbxassetid://10709762574",
+    ["lucide-arrow-big-right"] = "rbxassetid://10709762727",
+    ["lucide-arrow-big-up"] = "rbxassetid://10709762879",
+    ["lucide-arrow-down"] = "rbxassetid://10709767827",
+    ["lucide-arrow-down-circle"] = "rbxassetid://10709763034",
+    ["lucide-arrow-down-left"] = "rbxassetid://10709767656",
+    ["lucide-arrow-down-right"] = "rbxassetid://10709767750",
+    ["lucide-arrow-left"] = "rbxassetid://10709768114",
+    ["lucide-arrow-left-circle"] = "rbxassetid://10709767936",
+    ["lucide-arrow-left-right"] = "rbxassetid://10709768019",
+    ["lucide-arrow-right"] = "rbxassetid://10709768347",
+    ["lucide-arrow-right-circle"] = "rbxassetid://10709768226",
+    ["lucide-arrow-up"] = "rbxassetid://10709768939",
+    ["lucide-arrow-up-circle"] = "rbxassetid://10709768432",
+    ["lucide-arrow-up-down"] = "rbxassetid://10709768538",
+    ["lucide-arrow-up-left"] = "rbxassetid://10709768661",
+    ["lucide-arrow-up-right"] = "rbxassetid://10709768787",
+    ["lucide-asterisk"] = "rbxassetid://10709769095",
+    ["lucide-at-sign"] = "rbxassetid://10709769286",
+    ["lucide-award"] = "rbxassetid://10709769406",
+    ["lucide-axe"] = "rbxassetid://10709769508",
+    ["lucide-axis-3d"] = "rbxassetid://10709769598",
+    ["lucide-baby"] = "rbxassetid://10709769732",
+    ["lucide-backpack"] = "rbxassetid://10709769841",
+    ["lucide-baggage-claim"] = "rbxassetid://10709769935",
+    ["lucide-banana"] = "rbxassetid://10709770005",
+    ["lucide-banknote"] = "rbxassetid://10709770178",
+    ["lucide-bar-chart"] = "rbxassetid://10709773755",
+    ["lucide-bar-chart-2"] = "rbxassetid://10709770317",
+    ["lucide-bar-chart-3"] = "rbxassetid://10709770431",
+    ["lucide-bar-chart-4"] = "rbxassetid://10709770560",
+    ["lucide-bar-chart-horizontal"] = "rbxassetid://10709773669",
+    ["lucide-barcode"] = "rbxassetid://10747360675",
+    ["lucide-baseline"] = "rbxassetid://10709773863",
+    ["lucide-bath"] = "rbxassetid://10709773963",
+    ["lucide-battery"] = "rbxassetid://10709774640",
+    ["lucide-battery-charging"] = "rbxassetid://10709774068",
+    ["lucide-battery-full"] = "rbxassetid://10709774206",
+    ["lucide-battery-low"] = "rbxassetid://10709774370",
+    ["lucide-battery-medium"] = "rbxassetid://10709774513",
+    ["lucide-beaker"] = "rbxassetid://10709774756",
+    ["lucide-bed"] = "rbxassetid://10709775036",
+    ["lucide-bed-double"] = "rbxassetid://10709774864",
+    ["lucide-bed-single"] = "rbxassetid://10709774968",
+    ["lucide-beer"] = "rbxassetid://10709775167",
+    ["lucide-bell"] = "rbxassetid://10709775704",
+    ["lucide-bell-minus"] = "rbxassetid://10709775241",
+    ["lucide-bell-off"] = "rbxassetid://10709775320",
+    ["lucide-bell-plus"] = "rbxassetid://10709775448",
+    ["lucide-bell-ring"] = "rbxassetid://10709775560",
+    ["lucide-bike"] = "rbxassetid://10709775894",
+    ["lucide-binary"] = "rbxassetid://10709776050",
+    ["lucide-bitcoin"] = "rbxassetid://10709776126",
+    ["lucide-bluetooth"] = "rbxassetid://10709776655",
+    ["lucide-bluetooth-connected"] = "rbxassetid://10709776240",
+    ["lucide-bluetooth-off"] = "rbxassetid://10709776344",
+    ["lucide-bluetooth-searching"] = "rbxassetid://10709776501",
+    ["lucide-bold"] = "rbxassetid://10747813908",
+    ["lucide-bomb"] = "rbxassetid://10709781460",
+    ["lucide-bone"] = "rbxassetid://10709781605",
+    ["lucide-book"] = "rbxassetid://10709781824",
+    ["lucide-book-open"] = "rbxassetid://10709781717",
+    ["lucide-bookmark"] = "rbxassetid://10709782154",
+    ["lucide-bookmark-minus"] = "rbxassetid://10709781919",
+    ["lucide-bookmark-plus"] = "rbxassetid://10709782044",
+    ["lucide-bot"] = "rbxassetid://10709782230",
+    ["lucide-box"] = "rbxassetid://10709782497",
+    ["lucide-box-select"] = "rbxassetid://10709782342",
+    ["lucide-boxes"] = "rbxassetid://10709782582",
+    ["lucide-briefcase"] = "rbxassetid://10709782662",
+    ["lucide-brush"] = "rbxassetid://10709782758",
+    ["lucide-bug"] = "rbxassetid://10709782845",
+    ["lucide-building"] = "rbxassetid://10709783051",
+    ["lucide-building-2"] = "rbxassetid://10709782939",
+    ["lucide-bus"] = "rbxassetid://10709783137",
+    ["lucide-cake"] = "rbxassetid://10709783217",
+    ["lucide-calculator"] = "rbxassetid://10709783311",
+    ["lucide-calendar"] = "rbxassetid://10709789505",
+    ["lucide-calendar-check"] = "rbxassetid://10709783474",
+    ["lucide-calendar-check-2"] = "rbxassetid://10709783392",
+    ["lucide-calendar-clock"] = "rbxassetid://10709783577",
+    ["lucide-calendar-days"] = "rbxassetid://10709783673",
+    ["lucide-calendar-heart"] = "rbxassetid://10709783835",
+    ["lucide-calendar-minus"] = "rbxassetid://10709783959",
+    ["lucide-calendar-off"] = "rbxassetid://10709788784",
+    ["lucide-calendar-plus"] = "rbxassetid://10709788937",
+    ["lucide-calendar-range"] = "rbxassetid://10709789053",
+    ["lucide-calendar-search"] = "rbxassetid://10709789200",
+    ["lucide-calendar-x"] = "rbxassetid://10709789407",
+    ["lucide-calendar-x-2"] = "rbxassetid://10709789329",
+    ["lucide-camera"] = "rbxassetid://10709789686",
+    ["lucide-camera-off"] = "rbxassetid://10747822677",
+    ["lucide-car"] = "rbxassetid://10709789810",
+    ["lucide-carrot"] = "rbxassetid://10709789960",
+    ["lucide-cast"] = "rbxassetid://10709790097",
+    ["lucide-charge"] = "rbxassetid://10709790202",
+    ["lucide-check"] = "rbxassetid://10709790644",
+    ["lucide-check-circle"] = "rbxassetid://10709790387",
+    ["lucide-check-circle-2"] = "rbxassetid://10709790298",
+    ["lucide-check-square"] = "rbxassetid://10709790537",
+    ["lucide-chef-hat"] = "rbxassetid://10709790757",
+    ["lucide-cherry"] = "rbxassetid://10709790875",
+    ["lucide-chevron-down"] = "rbxassetid://10709790948",
+    ["lucide-chevron-first"] = "rbxassetid://10709791015",
+    ["lucide-chevron-last"] = "rbxassetid://10709791130",
+    ["lucide-chevron-left"] = "rbxassetid://10709791281",
+    ["lucide-chevron-right"] = "rbxassetid://10709791437",
+    ["lucide-chevron-up"] = "rbxassetid://10709791523",
+    ["lucide-chevrons-down"] = "rbxassetid://10709796864",
+    ["lucide-chevrons-down-up"] = "rbxassetid://10709791632",
+    ["lucide-chevrons-left"] = "rbxassetid://10709797151",
+    ["lucide-chevrons-left-right"] = "rbxassetid://10709797006",
+    ["lucide-chevrons-right"] = "rbxassetid://10709797382",
+    ["lucide-chevrons-right-left"] = "rbxassetid://10709797274",
+    ["lucide-chevrons-up"] = "rbxassetid://10709797622",
+    ["lucide-chevrons-up-down"] = "rbxassetid://10709797508",
+    ["lucide-chrome"] = "rbxassetid://10709797725",
+    ["lucide-circle"] = "rbxassetid://10709798174",
+    ["lucide-circle-dot"] = "rbxassetid://10709797837",
+    ["lucide-circle-ellipsis"] = "rbxassetid://10709797985",
+    ["lucide-circle-slashed"] = "rbxassetid://10709798100",
+    ["lucide-citrus"] = "rbxassetid://10709798276",
+    ["lucide-clapperboard"] = "rbxassetid://10709798350",
+    ["lucide-clipboard"] = "rbxassetid://10709799288",
+    ["lucide-clipboard-check"] = "rbxassetid://10709798443",
+    ["lucide-clipboard-copy"] = "rbxassetid://10709798574",
+    ["lucide-clipboard-edit"] = "rbxassetid://10709798682",
+    ["lucide-clipboard-list"] = "rbxassetid://10709798792",
+    ["lucide-clipboard-signature"] = "rbxassetid://10709798890",
+    ["lucide-clipboard-type"] = "rbxassetid://10709798999",
+    ["lucide-clipboard-x"] = "rbxassetid://10709799124",
+    ["lucide-clock"] = "rbxassetid://10709805144",
+    ["lucide-clock-1"] = "rbxassetid://10709799535",
+    ["lucide-clock-10"] = "rbxassetid://10709799718",
+    ["lucide-clock-11"] = "rbxassetid://10709799818",
+    ["lucide-clock-12"] = "rbxassetid://10709799962",
+    ["lucide-clock-2"] = "rbxassetid://10709803876",
+    ["lucide-clock-3"] = "rbxassetid://10709803989",
+    ["lucide-clock-4"] = "rbxassetid://10709804164",
+    ["lucide-clock-5"] = "rbxassetid://10709804291",
+    ["lucide-clock-6"] = "rbxassetid://10709804435",
+    ["lucide-clock-7"] = "rbxassetid://10709804599",
+    ["lucide-clock-8"] = "rbxassetid://10709804784",
+    ["lucide-clock-9"] = "rbxassetid://10709804996",
+    ["lucide-cloud"] = "rbxassetid://10709806740",
+    ["lucide-cloud-cog"] = "rbxassetid://10709805262",
+    ["lucide-cloud-drizzle"] = "rbxassetid://10709805371",
+    ["lucide-cloud-fog"] = "rbxassetid://10709805477",
+    ["lucide-cloud-hail"] = "rbxassetid://10709805596",
+    ["lucide-cloud-lightning"] = "rbxassetid://10709805727",
+    ["lucide-cloud-moon"] = "rbxassetid://10709805942",
+    ["lucide-cloud-moon-rain"] = "rbxassetid://10709805838",
+    ["lucide-cloud-off"] = "rbxassetid://10709806060",
+    ["lucide-cloud-rain"] = "rbxassetid://10709806277",
+    ["lucide-cloud-rain-wind"] = "rbxassetid://10709806166",
+    ["lucide-cloud-snow"] = "rbxassetid://10709806374",
+    ["lucide-cloud-sun"] = "rbxassetid://10709806631",
+    ["lucide-cloud-sun-rain"] = "rbxassetid://10709806475",
+    ["lucide-cloudy"] = "rbxassetid://10709806859",
+    ["lucide-clover"] = "rbxassetid://10709806995",
+    ["lucide-code"] = "rbxassetid://10709810463",
+    ["lucide-code-2"] = "rbxassetid://10709807111",
+    ["lucide-codepen"] = "rbxassetid://10709810534",
+    ["lucide-codesandbox"] = "rbxassetid://10709810676",
+    ["lucide-coffee"] = "rbxassetid://10709810814",
+    ["lucide-cog"] = "rbxassetid://10709810948",
+    ["lucide-coins"] = "rbxassetid://10709811110",
+    ["lucide-columns"] = "rbxassetid://10709811261",
+    ["lucide-command"] = "rbxassetid://10709811365",
+    ["lucide-compass"] = "rbxassetid://10709811445",
+    ["lucide-component"] = "rbxassetid://10709811595",
+    ["lucide-concierge-bell"] = "rbxassetid://10709811706",
+    ["lucide-connection"] = "rbxassetid://10747361219",
+    ["lucide-contact"] = "rbxassetid://10709811834",
+    ["lucide-contrast"] = "rbxassetid://10709811939",
+    ["lucide-cookie"] = "rbxassetid://10709812067",
+    ["lucide-copy"] = "rbxassetid://10709812159",
+    ["lucide-copyleft"] = "rbxassetid://10709812251",
+    ["lucide-copyright"] = "rbxassetid://10709812311",
+    ["lucide-corner-down-left"] = "rbxassetid://10709812396",
+    ["lucide-corner-down-right"] = "rbxassetid://10709812485",
+    ["lucide-corner-left-down"] = "rbxassetid://10709812632",
+    ["lucide-corner-left-up"] = "rbxassetid://10709812784",
+    ["lucide-corner-right-down"] = "rbxassetid://10709812939",
+    ["lucide-corner-right-up"] = "rbxassetid://10709813094",
+    ["lucide-corner-up-left"] = "rbxassetid://10709813185",
+    ["lucide-corner-up-right"] = "rbxassetid://10709813281",
+    ["lucide-cpu"] = "rbxassetid://10709813383",
+    ["lucide-croissant"] = "rbxassetid://10709818125",
+    ["lucide-crop"] = "rbxassetid://10709818245",
+    ["lucide-cross"] = "rbxassetid://10709818399",
+    ["lucide-crosshair"] = "rbxassetid://10709818534",
+    ["lucide-crown"] = "rbxassetid://10709818626",
+    ["lucide-cup-soda"] = "rbxassetid://10709818763",
+    ["lucide-curly-braces"] = "rbxassetid://10709818847",
+    ["lucide-currency"] = "rbxassetid://10709818931",
+    ["lucide-database"] = "rbxassetid://10709818996",
+    ["lucide-delete"] = "rbxassetid://10709819059",
+    ["lucide-diamond"] = "rbxassetid://10709819149",
+    ["lucide-dice-1"] = "rbxassetid://10709819266",
+    ["lucide-dice-2"] = "rbxassetid://10709819361",
+    ["lucide-dice-3"] = "rbxassetid://10709819508",
+    ["lucide-dice-4"] = "rbxassetid://10709819670",
+    ["lucide-dice-5"] = "rbxassetid://10709819801",
+    ["lucide-dice-6"] = "rbxassetid://10709819896",
+    ["lucide-dices"] = "rbxassetid://10723343321",
+    ["lucide-diff"] = "rbxassetid://10723343416",
+    ["lucide-disc"] = "rbxassetid://10723343537",
+    ["lucide-divide"] = "rbxassetid://10723343805",
+    ["lucide-divide-circle"] = "rbxassetid://10723343636",
+    ["lucide-divide-square"] = "rbxassetid://10723343737",
+    ["lucide-dollar-sign"] = "rbxassetid://10723343958",
+    ["lucide-download"] = "rbxassetid://10723344270",
+    ["lucide-download-cloud"] = "rbxassetid://10723344088",
+    ["lucide-droplet"] = "rbxassetid://10723344432",
+    ["lucide-droplets"] = "rbxassetid://10734883356",
+    ["lucide-drumstick"] = "rbxassetid://10723344737",
+    ["lucide-edit"] = "rbxassetid://10734883598",
+    ["lucide-edit-2"] = "rbxassetid://10723344885",
+    ["lucide-edit-3"] = "rbxassetid://10723345088",
+    ["lucide-egg"] = "rbxassetid://10723345518",
+    ["lucide-egg-fried"] = "rbxassetid://10723345347",
+    ["lucide-electricity"] = "rbxassetid://10723345749",
+    ["lucide-electricity-off"] = "rbxassetid://10723345643",
+    ["lucide-equal"] = "rbxassetid://10723345990",
+    ["lucide-equal-not"] = "rbxassetid://10723345866",
+    ["lucide-eraser"] = "rbxassetid://10723346158",
+    ["lucide-euro"] = "rbxassetid://10723346372",
+    ["lucide-expand"] = "rbxassetid://10723346553",
+    ["lucide-external-link"] = "rbxassetid://10723346684",
+    ["lucide-eye"] = "rbxassetid://10723346959",
+    ["lucide-eye-off"] = "rbxassetid://10723346871",
+    ["lucide-factory"] = "rbxassetid://10723347051",
+    ["lucide-fan"] = "rbxassetid://10723354359",
+    ["lucide-fast-forward"] = "rbxassetid://10723354521",
+    ["lucide-feather"] = "rbxassetid://10723354671",
+    ["lucide-figma"] = "rbxassetid://10723354801",
+    ["lucide-file"] = "rbxassetid://10723374641",
+    ["lucide-file-archive"] = "rbxassetid://10723354921",
+    ["lucide-file-audio"] = "rbxassetid://10723355148",
+    ["lucide-file-audio-2"] = "rbxassetid://10723355026",
+    ["lucide-file-axis-3d"] = "rbxassetid://10723355272",
+    ["lucide-file-badge"] = "rbxassetid://10723355622",
+    ["lucide-file-badge-2"] = "rbxassetid://10723355451",
+    ["lucide-file-bar-chart"] = "rbxassetid://10723355887",
+    ["lucide-file-bar-chart-2"] = "rbxassetid://10723355746",
+    ["lucide-file-box"] = "rbxassetid://10723355989",
+    ["lucide-file-check"] = "rbxassetid://10723356210",
+    ["lucide-file-check-2"] = "rbxassetid://10723356100",
+    ["lucide-file-clock"] = "rbxassetid://10723356329",
+    ["lucide-file-code"] = "rbxassetid://10723356507",
+    ["lucide-file-cog"] = "rbxassetid://10723356830",
+    ["lucide-file-cog-2"] = "rbxassetid://10723356676",
+    ["lucide-file-diff"] = "rbxassetid://10723357039",
+    ["lucide-file-digit"] = "rbxassetid://10723357151",
+    ["lucide-file-down"] = "rbxassetid://10723357322",
+    ["lucide-file-edit"] = "rbxassetid://10723357495",
+    ["lucide-file-heart"] = "rbxassetid://10723357637",
+    ["lucide-file-image"] = "rbxassetid://10723357790",
+    ["lucide-file-input"] = "rbxassetid://10723357933",
+    ["lucide-file-json"] = "rbxassetid://10723364435",
+    ["lucide-file-json-2"] = "rbxassetid://10723364361",
+    ["lucide-file-key"] = "rbxassetid://10723364605",
+    ["lucide-file-key-2"] = "rbxassetid://10723364515",
+    ["lucide-file-line-chart"] = "rbxassetid://10723364725",
+    ["lucide-file-lock"] = "rbxassetid://10723364957",
+    ["lucide-file-lock-2"] = "rbxassetid://10723364861",
+    ["lucide-file-minus"] = "rbxassetid://10723365254",
+    ["lucide-file-minus-2"] = "rbxassetid://10723365086",
+    ["lucide-file-output"] = "rbxassetid://10723365457",
+    ["lucide-file-pie-chart"] = "rbxassetid://10723365598",
+    ["lucide-file-plus"] = "rbxassetid://10723365877",
+    ["lucide-file-plus-2"] = "rbxassetid://10723365766",
+    ["lucide-file-question"] = "rbxassetid://10723365987",
+    ["lucide-file-scan"] = "rbxassetid://10723366167",
+    ["lucide-file-search"] = "rbxassetid://10723366550",
+    ["lucide-file-search-2"] = "rbxassetid://10723366340",
+    ["lucide-file-signature"] = "rbxassetid://10723366741",
+    ["lucide-file-spreadsheet"] = "rbxassetid://10723366962",
+    ["lucide-file-symlink"] = "rbxassetid://10723367098",
+    ["lucide-file-terminal"] = "rbxassetid://10723367244",
+    ["lucide-file-text"] = "rbxassetid://10723367380",
+    ["lucide-file-type"] = "rbxassetid://10723367606",
+    ["lucide-file-type-2"] = "rbxassetid://10723367509",
+    ["lucide-file-up"] = "rbxassetid://10723367734",
+    ["lucide-file-video"] = "rbxassetid://10723373884",
+    ["lucide-file-video-2"] = "rbxassetid://10723367834",
+    ["lucide-file-volume"] = "rbxassetid://10723374172",
+    ["lucide-file-volume-2"] = "rbxassetid://10723374030",
+    ["lucide-file-warning"] = "rbxassetid://10723374276",
+    ["lucide-file-x"] = "rbxassetid://10723374544",
+    ["lucide-file-x-2"] = "rbxassetid://10723374378",
+    ["lucide-files"] = "rbxassetid://10723374759",
+    ["lucide-film"] = "rbxassetid://10723374981",
+    ["lucide-filter"] = "rbxassetid://10723375128",
+    ["lucide-fingerprint"] = "rbxassetid://10723375250",
+    ["lucide-flag"] = "rbxassetid://10723375890",
+    ["lucide-flag-off"] = "rbxassetid://10723375443",
+    ["lucide-flag-triangle-left"] = "rbxassetid://10723375608",
+    ["lucide-flag-triangle-right"] = "rbxassetid://10723375727",
+    ["lucide-flame"] = "rbxassetid://10723376114",
+    ["lucide-flashlight"] = "rbxassetid://10723376471",
+    ["lucide-flashlight-off"] = "rbxassetid://10723376365",
+    ["lucide-flask-conical"] = "rbxassetid://10734883986",
+    ["lucide-flask-round"] = "rbxassetid://10723376614",
+    ["lucide-flip-horizontal"] = "rbxassetid://10723376884",
+    ["lucide-flip-horizontal-2"] = "rbxassetid://10723376745",
+    ["lucide-flip-vertical"] = "rbxassetid://10723377138",
+    ["lucide-flip-vertical-2"] = "rbxassetid://10723377026",
+    ["lucide-flower"] = "rbxassetid://10747830374",
+    ["lucide-flower-2"] = "rbxassetid://10723377305",
+    ["lucide-focus"] = "rbxassetid://10723377537",
+    ["lucide-folder"] = "rbxassetid://10723387563",
+    ["lucide-folder-archive"] = "rbxassetid://10723384478",
+    ["lucide-folder-check"] = "rbxassetid://10723384605",
+    ["lucide-folder-clock"] = "rbxassetid://10723384731",
+    ["lucide-folder-closed"] = "rbxassetid://10723384893",
+    ["lucide-folder-cog"] = "rbxassetid://10723385213",
+    ["lucide-folder-cog-2"] = "rbxassetid://10723385036",
+    ["lucide-folder-down"] = "rbxassetid://10723385338",
+    ["lucide-folder-edit"] = "rbxassetid://10723385445",
+    ["lucide-folder-heart"] = "rbxassetid://10723385545",
+    ["lucide-folder-input"] = "rbxassetid://10723385721",
+    ["lucide-folder-key"] = "rbxassetid://10723385848",
+    ["lucide-folder-lock"] = "rbxassetid://10723386005",
+    ["lucide-folder-minus"] = "rbxassetid://10723386127",
+    ["lucide-folder-open"] = "rbxassetid://10723386277",
+    ["lucide-folder-output"] = "rbxassetid://10723386386",
+    ["lucide-folder-plus"] = "rbxassetid://10723386531",
+    ["lucide-folder-search"] = "rbxassetid://10723386787",
+    ["lucide-folder-search-2"] = "rbxassetid://10723386674",
+    ["lucide-folder-symlink"] = "rbxassetid://10723386930",
+    ["lucide-folder-tree"] = "rbxassetid://10723387085",
+    ["lucide-folder-up"] = "rbxassetid://10723387265",
+    ["lucide-folder-x"] = "rbxassetid://10723387448",
+    ["lucide-folders"] = "rbxassetid://10723387721",
+    ["lucide-form-input"] = "rbxassetid://10723387841",
+    ["lucide-forward"] = "rbxassetid://10723388016",
+    ["lucide-frame"] = "rbxassetid://10723394389",
+    ["lucide-framer"] = "rbxassetid://10723394565",
+    ["lucide-frown"] = "rbxassetid://10723394681",
+    ["lucide-fuel"] = "rbxassetid://10723394846",
+    ["lucide-function-square"] = "rbxassetid://10723395041",
+    ["lucide-gamepad"] = "rbxassetid://10723395457",
+    ["lucide-gamepad-2"] = "rbxassetid://10723395215",
+    ["lucide-gauge"] = "rbxassetid://10723395708",
+    ["lucide-gavel"] = "rbxassetid://10723395896",
+    ["lucide-gem"] = "rbxassetid://10723396000",
+    ["lucide-ghost"] = "rbxassetid://10723396107",
+    ["lucide-gift"] = "rbxassetid://10723396402",
+    ["lucide-gift-card"] = "rbxassetid://10723396225",
+    ["lucide-git-branch"] = "rbxassetid://10723396676",
+    ["lucide-git-branch-plus"] = "rbxassetid://10723396542",
+    ["lucide-git-commit"] = "rbxassetid://10723396812",
+    ["lucide-git-compare"] = "rbxassetid://10723396954",
+    ["lucide-git-fork"] = "rbxassetid://10723397049",
+    ["lucide-git-merge"] = "rbxassetid://10723397165",
+    ["lucide-git-pull-request"] = "rbxassetid://10723397431",
+    ["lucide-git-pull-request-closed"] = "rbxassetid://10723397268",
+    ["lucide-git-pull-request-draft"] = "rbxassetid://10734884302",
+    ["lucide-glass"] = "rbxassetid://10723397788",
+    ["lucide-glass-2"] = "rbxassetid://10723397529",
+    ["lucide-glass-water"] = "rbxassetid://10723397678",
+    ["lucide-glasses"] = "rbxassetid://10723397895",
+    ["lucide-globe"] = "rbxassetid://10723404337",
+    ["lucide-globe-2"] = "rbxassetid://10723398002",
+    ["lucide-grab"] = "rbxassetid://10723404472",
+    ["lucide-graduation-cap"] = "rbxassetid://10723404691",
+    ["lucide-grape"] = "rbxassetid://10723404822",
+    ["lucide-grid"] = "rbxassetid://10723404936",
+    ["lucide-grip-horizontal"] = "rbxassetid://10723405089",
+    ["lucide-grip-vertical"] = "rbxassetid://10723405236",
+    ["lucide-hammer"] = "rbxassetid://10723405360",
+    ["lucide-hand"] = "rbxassetid://10723405649",
+    ["lucide-hand-metal"] = "rbxassetid://10723405508",
+    ["lucide-hard-drive"] = "rbxassetid://10723405749",
+    ["lucide-hard-hat"] = "rbxassetid://10723405859",
+    ["lucide-hash"] = "rbxassetid://10723405975",
+    ["lucide-haze"] = "rbxassetid://10723406078",
+    ["lucide-headphones"] = "rbxassetid://10723406165",
+    ["lucide-heart"] = "rbxassetid://10723406885",
+    ["lucide-heart-crack"] = "rbxassetid://10723406299",
+    ["lucide-heart-handshake"] = "rbxassetid://10723406480",
+    ["lucide-heart-off"] = "rbxassetid://10723406662",
+    ["lucide-heart-pulse"] = "rbxassetid://10723406795",
+    ["lucide-help-circle"] = "rbxassetid://10723406988",
+    ["lucide-hexagon"] = "rbxassetid://10723407092",
+    ["lucide-highlighter"] = "rbxassetid://10723407192",
+    ["lucide-history"] = "rbxassetid://10723407335",
+    ["lucide-home"] = "rbxassetid://10723407389",
+    ["lucide-hourglass"] = "rbxassetid://10723407498",
+    ["lucide-ice-cream"] = "rbxassetid://10723414308",
+    ["lucide-image"] = "rbxassetid://10723415040",
+    ["lucide-image-minus"] = "rbxassetid://10723414487",
+    ["lucide-image-off"] = "rbxassetid://10723414677",
+    ["lucide-image-plus"] = "rbxassetid://10723414827",
+    ["lucide-import"] = "rbxassetid://10723415205",
+    ["lucide-inbox"] = "rbxassetid://10723415335",
+    ["lucide-indent"] = "rbxassetid://10723415494",
+    ["lucide-indian-rupee"] = "rbxassetid://10723415642",
+    ["lucide-infinity"] = "rbxassetid://10723415766",
+    ["lucide-info"] = "rbxassetid://10723415903",
+    ["lucide-inspect"] = "rbxassetid://10723416057",
+    ["lucide-italic"] = "rbxassetid://10723416195",
+    ["lucide-japanese-yen"] = "rbxassetid://10723416363",
+    ["lucide-joystick"] = "rbxassetid://10723416527",
+    ["lucide-key"] = "rbxassetid://10723416652",
+    ["lucide-keyboard"] = "rbxassetid://10723416765",
+    ["lucide-lamp"] = "rbxassetid://10723417513",
+    ["lucide-lamp-ceiling"] = "rbxassetid://10723416922",
+    ["lucide-lamp-desk"] = "rbxassetid://10723417016",
+    ["lucide-lamp-floor"] = "rbxassetid://10723417131",
+    ["lucide-lamp-wall-down"] = "rbxassetid://10723417240",
+    ["lucide-lamp-wall-up"] = "rbxassetid://10723417356",
+    ["lucide-landmark"] = "rbxassetid://10723417608",
+    ["lucide-languages"] = "rbxassetid://10723417703",
+    ["lucide-laptop"] = "rbxassetid://10723423881",
+    ["lucide-laptop-2"] = "rbxassetid://10723417797",
+    ["lucide-lasso"] = "rbxassetid://10723424235",
+    ["lucide-lasso-select"] = "rbxassetid://10723424058",
+    ["lucide-laugh"] = "rbxassetid://10723424372",
+    ["lucide-layers"] = "rbxassetid://10723424505",
+    ["lucide-layout"] = "rbxassetid://10723425376",
+    ["lucide-layout-dashboard"] = "rbxassetid://10723424646",
+    ["lucide-layout-grid"] = "rbxassetid://10723424838",
+    ["lucide-layout-list"] = "rbxassetid://10723424963",
+    ["lucide-layout-template"] = "rbxassetid://10723425187",
+    ["lucide-leaf"] = "rbxassetid://10723425539",
+    ["lucide-library"] = "rbxassetid://10723425615",
+    ["lucide-life-buoy"] = "rbxassetid://10723425685",
+    ["lucide-lightbulb"] = "rbxassetid://10723425852",
+    ["lucide-lightbulb-off"] = "rbxassetid://10723425762",
+    ["lucide-line-chart"] = "rbxassetid://10723426393",
+    ["lucide-link"] = "rbxassetid://10723426722",
+    ["lucide-link-2"] = "rbxassetid://10723426595",
+    ["lucide-link-2-off"] = "rbxassetid://10723426513",
+    ["lucide-list"] = "rbxassetid://10723433811",
+    ["lucide-list-checks"] = "rbxassetid://10734884548",
+    ["lucide-list-end"] = "rbxassetid://10723426886",
+    ["lucide-list-minus"] = "rbxassetid://10723426986",
+    ["lucide-list-music"] = "rbxassetid://10723427081",
+    ["lucide-list-ordered"] = "rbxassetid://10723427199",
+    ["lucide-list-plus"] = "rbxassetid://10723427334",
+    ["lucide-list-start"] = "rbxassetid://10723427494",
+    ["lucide-list-video"] = "rbxassetid://10723427619",
+    ["lucide-list-x"] = "rbxassetid://10723433655",
+    ["lucide-loader"] = "rbxassetid://10723434070",
+    ["lucide-loader-2"] = "rbxassetid://10723433935",
+    ["lucide-locate"] = "rbxassetid://10723434557",
+    ["lucide-locate-fixed"] = "rbxassetid://10723434236",
+    ["lucide-locate-off"] = "rbxassetid://10723434379",
+    ["lucide-lock"] = "rbxassetid://10723434711",
+    ["lucide-log-in"] = "rbxassetid://10723434830",
+    ["lucide-log-out"] = "rbxassetid://10723434906",
+    ["lucide-luggage"] = "rbxassetid://10723434993",
+    ["lucide-magnet"] = "rbxassetid://10723435069",
+    ["lucide-mail"] = "rbxassetid://10734885430",
+    ["lucide-mail-check"] = "rbxassetid://10723435182",
+    ["lucide-mail-minus"] = "rbxassetid://10723435261",
+    ["lucide-mail-open"] = "rbxassetid://10723435342",
+    ["lucide-mail-plus"] = "rbxassetid://10723435443",
+    ["lucide-mail-question"] = "rbxassetid://10723435515",
+    ["lucide-mail-search"] = "rbxassetid://10734884739",
+    ["lucide-mail-warning"] = "rbxassetid://10734885015",
+    ["lucide-mail-x"] = "rbxassetid://10734885247",
+    ["lucide-mails"] = "rbxassetid://10734885614",
+    ["lucide-map"] = "rbxassetid://10734886202",
+    ["lucide-map-pin"] = "rbxassetid://10734886004",
+    ["lucide-map-pin-off"] = "rbxassetid://10734885803",
+    ["lucide-maximize"] = "rbxassetid://10734886735",
+    ["lucide-maximize-2"] = "rbxassetid://10734886496",
+    ["lucide-medal"] = "rbxassetid://10734887072",
+    ["lucide-megaphone"] = "rbxassetid://10734887454",
+    ["lucide-megaphone-off"] = "rbxassetid://10734887311",
+    ["lucide-meh"] = "rbxassetid://10734887603",
+    ["lucide-menu"] = "rbxassetid://10734887784",
+    ["lucide-message-circle"] = "rbxassetid://10734888000",
+    ["lucide-message-square"] = "rbxassetid://10734888228",
+    ["lucide-mic"] = "rbxassetid://10734888864",
+    ["lucide-mic-2"] = "rbxassetid://10734888430",
+    ["lucide-mic-off"] = "rbxassetid://10734888646",
+    ["lucide-microscope"] = "rbxassetid://10734889106",
+    ["lucide-microwave"] = "rbxassetid://10734895076",
+    ["lucide-milestone"] = "rbxassetid://10734895310",
+    ["lucide-minimize"] = "rbxassetid://10734895698",
+    ["lucide-minimize-2"] = "rbxassetid://10734895530",
+    ["lucide-minus"] = "rbxassetid://10734896206",
+    ["lucide-minus-circle"] = "rbxassetid://10734895856",
+    ["lucide-minus-square"] = "rbxassetid://10734896029",
+    ["lucide-monitor"] = "rbxassetid://10734896881",
+    ["lucide-monitor-off"] = "rbxassetid://10734896360",
+    ["lucide-monitor-speaker"] = "rbxassetid://10734896512",
+    ["lucide-moon"] = "rbxassetid://10734897102",
+    ["lucide-more-horizontal"] = "rbxassetid://10734897250",
+    ["lucide-more-vertical"] = "rbxassetid://10734897387",
+    ["lucide-mountain"] = "rbxassetid://10734897956",
+    ["lucide-mountain-snow"] = "rbxassetid://10734897665",
+    ["lucide-mouse"] = "rbxassetid://10734898592",
+    ["lucide-mouse-pointer"] = "rbxassetid://10734898476",
+    ["lucide-mouse-pointer-2"] = "rbxassetid://10734898194",
+    ["lucide-mouse-pointer-click"] = "rbxassetid://10734898355",
+    ["lucide-move"] = "rbxassetid://10734900011",
+    ["lucide-move-3d"] = "rbxassetid://10734898756",
+    ["lucide-move-diagonal"] = "rbxassetid://10734899164",
+    ["lucide-move-diagonal-2"] = "rbxassetid://10734898934",
+    ["lucide-move-horizontal"] = "rbxassetid://10734899414",
+    ["lucide-move-vertical"] = "rbxassetid://10734899821",
+    ["lucide-music"] = "rbxassetid://10734905958",
+    ["lucide-music-2"] = "rbxassetid://10734900215",
+    ["lucide-music-3"] = "rbxassetid://10734905665",
+    ["lucide-music-4"] = "rbxassetid://10734905823",
+    ["lucide-navigation"] = "rbxassetid://10734906744",
+    ["lucide-navigation-2"] = "rbxassetid://10734906332",
+    ["lucide-navigation-2-off"] = "rbxassetid://10734906144",
+    ["lucide-navigation-off"] = "rbxassetid://10734906580",
+    ["lucide-network"] = "rbxassetid://10734906975",
+    ["lucide-newspaper"] = "rbxassetid://10734907168",
+    ["lucide-octagon"] = "rbxassetid://10734907361",
+    ["lucide-option"] = "rbxassetid://10734907649",
+    ["lucide-outdent"] = "rbxassetid://10734907933",
+    ["lucide-package"] = "rbxassetid://10734909540",
+    ["lucide-package-2"] = "rbxassetid://10734908151",
+    ["lucide-package-check"] = "rbxassetid://10734908384",
+    ["lucide-package-minus"] = "rbxassetid://10734908626",
+    ["lucide-package-open"] = "rbxassetid://10734908793",
+    ["lucide-package-plus"] = "rbxassetid://10734909016",
+    ["lucide-package-search"] = "rbxassetid://10734909196",
+    ["lucide-package-x"] = "rbxassetid://10734909375",
+    ["lucide-paint-bucket"] = "rbxassetid://10734909847",
+    ["lucide-paintbrush"] = "rbxassetid://10734910187",
+    ["lucide-paintbrush-2"] = "rbxassetid://10734910030",
+    ["lucide-palette"] = "rbxassetid://10734910430",
+    ["lucide-palmtree"] = "rbxassetid://10734910680",
+    ["lucide-paperclip"] = "rbxassetid://10734910927",
+    ["lucide-party-popper"] = "rbxassetid://10734918735",
+    ["lucide-pause"] = "rbxassetid://10734919336",
+    ["lucide-pause-circle"] = "rbxassetid://10735024209",
+    ["lucide-pause-octagon"] = "rbxassetid://10734919143",
+    ["lucide-pen-tool"] = "rbxassetid://10734919503",
+    ["lucide-pencil"] = "rbxassetid://10734919691",
+    ["lucide-percent"] = "rbxassetid://10734919919",
+    ["lucide-person-standing"] = "rbxassetid://10734920149",
+    ["lucide-phone"] = "rbxassetid://10734921524",
+    ["lucide-phone-call"] = "rbxassetid://10734920305",
+    ["lucide-phone-forwarded"] = "rbxassetid://10734920508",
+    ["lucide-phone-incoming"] = "rbxassetid://10734920694",
+    ["lucide-phone-missed"] = "rbxassetid://10734920845",
+    ["lucide-phone-off"] = "rbxassetid://10734921077",
+    ["lucide-phone-outgoing"] = "rbxassetid://10734921288",
+    ["lucide-pie-chart"] = "rbxassetid://10734921727",
+    ["lucide-piggy-bank"] = "rbxassetid://10734921935",
+    ["lucide-pin"] = "rbxassetid://10734922324",
+    ["lucide-pin-off"] = "rbxassetid://10734922180",
+    ["lucide-pipette"] = "rbxassetid://10734922497",
+    ["lucide-pizza"] = "rbxassetid://10734922774",
+    ["lucide-plane"] = "rbxassetid://10734922971",
+    ["lucide-play"] = "rbxassetid://10734923549",
+    ["lucide-play-circle"] = "rbxassetid://10734923214",
+    ["lucide-plus"] = "rbxassetid://10734924532",
+    ["lucide-plus-circle"] = "rbxassetid://10734923868",
+    ["lucide-plus-square"] = "rbxassetid://10734924219",
+    ["lucide-podcast"] = "rbxassetid://10734929553",
+    ["lucide-pointer"] = "rbxassetid://10734929723",
+    ["lucide-pound-sterling"] = "rbxassetid://10734929981",
+    ["lucide-power"] = "rbxassetid://10734930466",
+    ["lucide-power-off"] = "rbxassetid://10734930257",
+    ["lucide-printer"] = "rbxassetid://10734930632",
+    ["lucide-puzzle"] = "rbxassetid://10734930886",
+    ["lucide-quote"] = "rbxassetid://10734931234",
+    ["lucide-radio"] = "rbxassetid://10734931596",
+    ["lucide-radio-receiver"] = "rbxassetid://10734931402",
+    ["lucide-rectangle-horizontal"] = "rbxassetid://10734931777",
+    ["lucide-rectangle-vertical"] = "rbxassetid://10734932081",
+    ["lucide-recycle"] = "rbxassetid://10734932295",
+    ["lucide-redo"] = "rbxassetid://10734932822",
+    ["lucide-redo-2"] = "rbxassetid://10734932586",
+    ["lucide-refresh-ccw"] = "rbxassetid://10734933056",
+    ["lucide-refresh-cw"] = "rbxassetid://10734933222",
+    ["lucide-refrigerator"] = "rbxassetid://10734933465",
+    ["lucide-regex"] = "rbxassetid://10734933655",
+    ["lucide-repeat"] = "rbxassetid://10734933966",
+    ["lucide-repeat-1"] = "rbxassetid://10734933826",
+    ["lucide-reply"] = "rbxassetid://10734934252",
+    ["lucide-reply-all"] = "rbxassetid://10734934132",
+    ["lucide-rewind"] = "rbxassetid://10734934347",
+    ["lucide-rocket"] = "rbxassetid://10734934585",
+    ["lucide-rocking-chair"] = "rbxassetid://10734939942",
+    ["lucide-rotate-3d"] = "rbxassetid://10734940107",
+    ["lucide-rotate-ccw"] = "rbxassetid://10734940376",
+    ["lucide-rotate-cw"] = "rbxassetid://10734940654",
+    ["lucide-rss"] = "rbxassetid://10734940825",
+    ["lucide-ruler"] = "rbxassetid://10734941018",
+    ["lucide-russian-ruble"] = "rbxassetid://10734941199",
+    ["lucide-sailboat"] = "rbxassetid://10734941354",
+    ["lucide-save"] = "rbxassetid://10734941499",
+    ["lucide-scale"] = "rbxassetid://10734941912",
+    ["lucide-scale-3d"] = "rbxassetid://10734941739",
+    ["lucide-scaling"] = "rbxassetid://10734942072",
+    ["lucide-scan"] = "rbxassetid://10734942565",
+    ["lucide-scan-face"] = "rbxassetid://10734942198",
+    ["lucide-scan-line"] = "rbxassetid://10734942351",
+    ["lucide-scissors"] = "rbxassetid://10734942778",
+    ["lucide-screen-share"] = "rbxassetid://10734943193",
+    ["lucide-screen-share-off"] = "rbxassetid://10734942967",
+    ["lucide-scroll"] = "rbxassetid://10734943448",
+    ["lucide-search"] = "rbxassetid://10734943674",
+    ["lucide-send"] = "rbxassetid://10734943902",
+    ["lucide-separator-horizontal"] = "rbxassetid://10734944115",
+    ["lucide-separator-vertical"] = "rbxassetid://10734944326",
+    ["lucide-server"] = "rbxassetid://10734949856",
+    ["lucide-server-cog"] = "rbxassetid://10734944444",
+    ["lucide-server-crash"] = "rbxassetid://10734944554",
+    ["lucide-server-off"] = "rbxassetid://10734944668",
+    ["lucide-settings"] = "rbxassetid://10734950309",
+    ["lucide-settings-2"] = "rbxassetid://10734950020",
+    ["lucide-share"] = "rbxassetid://10734950813",
+    ["lucide-share-2"] = "rbxassetid://10734950553",
+    ["lucide-sheet"] = "rbxassetid://10734951038",
+    ["lucide-shield"] = "rbxassetid://10734951847",
+    ["lucide-shield-alert"] = "rbxassetid://10734951173",
+    ["lucide-shield-check"] = "rbxassetid://10734951367",
+    ["lucide-shield-close"] = "rbxassetid://10734951535",
+    ["lucide-shield-off"] = "rbxassetid://10734951684",
+    ["lucide-shirt"] = "rbxassetid://10734952036",
+    ["lucide-shopping-bag"] = "rbxassetid://10734952273",
+    ["lucide-shopping-cart"] = "rbxassetid://10734952479",
+    ["lucide-shovel"] = "rbxassetid://10734952773",
+    ["lucide-shower-head"] = "rbxassetid://10734952942",
+    ["lucide-shrink"] = "rbxassetid://10734953073",
+    ["lucide-shrub"] = "rbxassetid://10734953241",
+    ["lucide-shuffle"] = "rbxassetid://10734953451",
+    ["lucide-sidebar"] = "rbxassetid://10734954301",
+    ["lucide-sidebar-close"] = "rbxassetid://10734953715",
+    ["lucide-sidebar-open"] = "rbxassetid://10734954000",
+    ["lucide-sigma"] = "rbxassetid://10734954538",
+    ["lucide-signal"] = "rbxassetid://10734961133",
+    ["lucide-signal-high"] = "rbxassetid://10734954807",
+    ["lucide-signal-low"] = "rbxassetid://10734955080",
+    ["lucide-signal-medium"] = "rbxassetid://10734955336",
+    ["lucide-signal-zero"] = "rbxassetid://10734960878",
+    ["lucide-siren"] = "rbxassetid://10734961284",
+    ["lucide-skip-back"] = "rbxassetid://10734961526",
+    ["lucide-skip-forward"] = "rbxassetid://10734961809",
+    ["lucide-skull"] = "rbxassetid://10734962068",
+    ["lucide-slack"] = "rbxassetid://10734962339",
+    ["lucide-slash"] = "rbxassetid://10734962600",
+    ["lucide-slice"] = "rbxassetid://10734963024",
+    ["lucide-sliders"] = "rbxassetid://10734963400",
+    ["lucide-sliders-horizontal"] = "rbxassetid://10734963191",
+    ["lucide-smartphone"] = "rbxassetid://10734963940",
+    ["lucide-smartphone-charging"] = "rbxassetid://10734963671",
+    ["lucide-smile"] = "rbxassetid://10734964441",
+    ["lucide-smile-plus"] = "rbxassetid://10734964188",
+    ["lucide-snowflake"] = "rbxassetid://10734964600",
+    ["lucide-sofa"] = "rbxassetid://10734964852",
+    ["lucide-sort-asc"] = "rbxassetid://10734965115",
+    ["lucide-sort-desc"] = "rbxassetid://10734965287",
+    ["lucide-speaker"] = "rbxassetid://10734965419",
+    ["lucide-sprout"] = "rbxassetid://10734965572",
+    ["lucide-square"] = "rbxassetid://10734965702",
+    ["lucide-star"] = "rbxassetid://10734966248",
+    ["lucide-star-half"] = "rbxassetid://10734965897",
+    ["lucide-star-off"] = "rbxassetid://10734966097",
+    ["lucide-stethoscope"] = "rbxassetid://10734966384",
+    ["lucide-sticker"] = "rbxassetid://10734972234",
+    ["lucide-sticky-note"] = "rbxassetid://10734972463",
+    ["lucide-stop-circle"] = "rbxassetid://10734972621",
+    ["lucide-stretch-horizontal"] = "rbxassetid://10734972862",
+    ["lucide-stretch-vertical"] = "rbxassetid://10734973130",
+    ["lucide-strikethrough"] = "rbxassetid://10734973290",
+    ["lucide-subscript"] = "rbxassetid://10734973457",
+    ["lucide-sun"] = "rbxassetid://10734974297",
+    ["lucide-sun-dim"] = "rbxassetid://10734973645",
+    ["lucide-sun-medium"] = "rbxassetid://10734973778",
+    ["lucide-sun-moon"] = "rbxassetid://10734973999",
+    ["lucide-sun-snow"] = "rbxassetid://10734974130",
+    ["lucide-sunrise"] = "rbxassetid://10734974522",
+    ["lucide-sunset"] = "rbxassetid://10734974689",
+    ["lucide-superscript"] = "rbxassetid://10734974850",
+    ["lucide-swiss-franc"] = "rbxassetid://10734975024",
+    ["lucide-switch-camera"] = "rbxassetid://10734975214",
+    ["lucide-sword"] = "rbxassetid://10734975486",
+    ["lucide-swords"] = "rbxassetid://10734975692",
+    ["lucide-syringe"] = "rbxassetid://10734975932",
+    ["lucide-table"] = "rbxassetid://10734976230",
+    ["lucide-table-2"] = "rbxassetid://10734976097",
+    ["lucide-tablet"] = "rbxassetid://10734976394",
+    ["lucide-tag"] = "rbxassetid://10734976528",
+    ["lucide-tags"] = "rbxassetid://10734976739",
+    ["lucide-target"] = "rbxassetid://10734977012",
+    ["lucide-tent"] = "rbxassetid://10734981750",
+    ["lucide-terminal"] = "rbxassetid://10734982144",
+    ["lucide-terminal-square"] = "rbxassetid://10734981995",
+    ["lucide-text-cursor"] = "rbxassetid://10734982395",
+    ["lucide-text-cursor-input"] = "rbxassetid://10734982297",
+    ["lucide-thermometer"] = "rbxassetid://10734983134",
+    ["lucide-thermometer-snowflake"] = "rbxassetid://10734982571",
+    ["lucide-thermometer-sun"] = "rbxassetid://10734982771",
+    ["lucide-thumbs-down"] = "rbxassetid://10734983359",
+    ["lucide-thumbs-up"] = "rbxassetid://10734983629",
+    ["lucide-ticket"] = "rbxassetid://10734983868",
+    ["lucide-timer"] = "rbxassetid://10734984606",
+    ["lucide-timer-off"] = "rbxassetid://10734984138",
+    ["lucide-timer-reset"] = "rbxassetid://10734984355",
+    ["lucide-toggle-left"] = "rbxassetid://10734984834",
+    ["lucide-toggle-right"] = "rbxassetid://10734985040",
+    ["lucide-tornado"] = "rbxassetid://10734985247",
+    ["lucide-toy-brick"] = "rbxassetid://10747361919",
+    ["lucide-train"] = "rbxassetid://10747362105",
+    ["lucide-trash"] = "rbxassetid://10747362393",
+    ["lucide-trash-2"] = "rbxassetid://10747362241",
+    ["lucide-tree-deciduous"] = "rbxassetid://10747362534",
+    ["lucide-tree-pine"] = "rbxassetid://10747362748",
+    ["lucide-trees"] = "rbxassetid://10747363016",
+    ["lucide-trending-down"] = "rbxassetid://10747363205",
+    ["lucide-trending-up"] = "rbxassetid://10747363465",
+    ["lucide-triangle"] = "rbxassetid://10747363621",
+    ["lucide-trophy"] = "rbxassetid://10747363809",
+    ["lucide-truck"] = "rbxassetid://10747364031",
+    ["lucide-tv"] = "rbxassetid://10747364593",
+    ["lucide-tv-2"] = "rbxassetid://10747364302",
+    ["lucide-type"] = "rbxassetid://10747364761",
+    ["lucide-umbrella"] = "rbxassetid://10747364971",
+    ["lucide-underline"] = "rbxassetid://10747365191",
+    ["lucide-undo"] = "rbxassetid://10747365484",
+    ["lucide-undo-2"] = "rbxassetid://10747365359",
+    ["lucide-unlink"] = "rbxassetid://10747365771",
+    ["lucide-unlink-2"] = "rbxassetid://10747397871",
+    ["lucide-unlock"] = "rbxassetid://10747366027",
+    ["lucide-upload"] = "rbxassetid://10747366434",
+    ["lucide-upload-cloud"] = "rbxassetid://10747366266",
+    ["lucide-usb"] = "rbxassetid://10747366606",
+    ["lucide-user"] = "rbxassetid://10747373176",
+    ["lucide-user-check"] = "rbxassetid://10747371901",
+    ["lucide-user-cog"] = "rbxassetid://10747372167",
+    ["lucide-user-minus"] = "rbxassetid://10747372346",
+    ["lucide-user-plus"] = "rbxassetid://10747372702",
+    ["lucide-user-x"] = "rbxassetid://10747372992",
+    ["lucide-users"] = "rbxassetid://10747373426",
+    ["lucide-utensils"] = "rbxassetid://10747373821",
+    ["lucide-utensils-crossed"] = "rbxassetid://10747373629",
+    ["lucide-venetian-mask"] = "rbxassetid://10747374003",
+    ["lucide-verified"] = "rbxassetid://10747374131",
+    ["lucide-vibrate"] = "rbxassetid://10747374489",
+    ["lucide-vibrate-off"] = "rbxassetid://10747374269",
+    ["lucide-video"] = "rbxassetid://10747374938",
+    ["lucide-video-off"] = "rbxassetid://10747374721",
+    ["lucide-view"] = "rbxassetid://10747375132",
+    ["lucide-voicemail"] = "rbxassetid://10747375281",
+    ["lucide-volume"] = "rbxassetid://10747376008",
+    ["lucide-volume-1"] = "rbxassetid://10747375450",
+    ["lucide-volume-2"] = "rbxassetid://10747375679",
+    ["lucide-volume-x"] = "rbxassetid://10747375880",
+    ["lucide-wallet"] = "rbxassetid://10747376205",
+    ["lucide-wand"] = "rbxassetid://10747376565",
+    ["lucide-wand-2"] = "rbxassetid://10747376349",
+    ["lucide-watch"] = "rbxassetid://10747376722",
+    ["lucide-waves"] = "rbxassetid://10747376931",
+    ["lucide-webcam"] = "rbxassetid://10747381992",
+    ["lucide-wifi"] = "rbxassetid://10747382504",
+    ["lucide-wifi-off"] = "rbxassetid://10747382268",
+    ["lucide-wind"] = "rbxassetid://10747382750",
+    ["lucide-wrap-text"] = "rbxassetid://10747383065",
+    ["lucide-wrench"] = "rbxassetid://10747383470",
+    ["lucide-x"] = "rbxassetid://10747384394",
+    ["lucide-x-circle"] = "rbxassetid://10747383819",
+    ["lucide-x-octagon"] = "rbxassetid://10747384037",
+    ["lucide-x-square"] = "rbxassetid://10747384217",
+    ["lucide-zoom-in"] = "rbxassetid://10747384552",
+    ["lucide-zoom-out"] = "rbxassetid://10747384679",
+}
+
+setmetatable(Icons, {
+    __index = function(tbl, key)
+        if type(key) ~= "string" then return nil end
+        local raw = rawget(tbl, key)
+        if raw then return raw end
+        local lk = string.lower(key)
+        local lkRaw = rawget(tbl, lk)
+        if lkRaw then return lkRaw end
+        local lucideKey = "lucide-" .. lk
+        if rawget(tbl, lucideKey) then
+            return rawget(tbl, lucideKey)
+        end
+        if lk == "view_in_ar" or lk == "terminal" then
+            return rawget(tbl, "Terminal") or "rbxassetid://10734982144"
+        elseif lk == "palette" then
+            return rawget(tbl, "Palette") or "rbxassetid://10709791100"
+        elseif lk == "settings" then
+            return rawget(tbl, "Settings") or "rbxassetid://10734950309"
+        elseif lk == "notifications_active" or lk == "bell" then
+            return rawget(tbl, "Bell") or "rbxassetid://10709775704"
+        end
+        return nil
+    end
+})
+
+
+-- ================= 5 BỘ THEMES ĐA SẮC (CÓ TỰ LƯU/ĐỌC FILE) =================
+local THEME_CONFIG_FILE = "CaoTuanAnh_Theme.txt"
+
+local THEMES = {
+    ["Luxury Gold"] = {
+        Name = "Luxury Gold",
+        Accent = Color3.fromRGB(245, 158, 11),
+        Bright = Color3.fromRGB(255, 215, 0),
+        Light = Color3.fromRGB(254, 240, 138),
+        BgCard = Color3.fromRGB(13, 13, 20),
+        BgInner = Color3.fromRGB(18, 18, 28),
+        Border = Color3.fromRGB(245, 158, 11),
+        Grad1 = Color3.fromRGB(255, 224, 102),
+        Grad2 = Color3.fromRGB(245, 158, 11),
+    },
+    ["Cyber Cyan"] = {
+        Name = "Cyber Cyan",
+        Accent = Color3.fromRGB(6, 182, 212),
+        Bright = Color3.fromRGB(56, 189, 248),
+        Light = Color3.fromRGB(186, 230, 253),
+        BgCard = Color3.fromRGB(10, 16, 24),
+        BgInner = Color3.fromRGB(14, 22, 34),
+        Border = Color3.fromRGB(6, 182, 212),
+        Grad1 = Color3.fromRGB(56, 189, 248),
+        Grad2 = Color3.fromRGB(6, 182, 212),
+    },
+    ["Ruby Crimson"] = {
+        Name = "Ruby Crimson",
+        Accent = Color3.fromRGB(239, 68, 68),
+        Bright = Color3.fromRGB(248, 113, 113),
+        Light = Color3.fromRGB(254, 202, 202),
+        BgCard = Color3.fromRGB(20, 12, 14),
+        BgInner = Color3.fromRGB(28, 16, 20),
+        Border = Color3.fromRGB(239, 68, 68),
+        Grad1 = Color3.fromRGB(248, 113, 113),
+        Grad2 = Color3.fromRGB(239, 68, 68),
+    },
+    ["Emerald Green"] = {
+        Name = "Emerald Green",
+        Accent = Color3.fromRGB(16, 185, 129),
+        Bright = Color3.fromRGB(52, 211, 153),
+        Light = Color3.fromRGB(167, 243, 208),
+        BgCard = Color3.fromRGB(10, 18, 14),
+        BgInner = Color3.fromRGB(14, 26, 20),
+        Border = Color3.fromRGB(16, 185, 129),
+        Grad1 = Color3.fromRGB(52, 211, 153),
+        Grad2 = Color3.fromRGB(16, 185, 129),
+    },
+    ["Amethyst Purple"] = {
+        Name = "Amethyst Purple",
+        Accent = Color3.fromRGB(168, 85, 247),
+        Bright = Color3.fromRGB(192, 132, 252),
+        Light = Color3.fromRGB(233, 213, 255),
+        BgCard = Color3.fromRGB(18, 12, 24),
+        BgInner = Color3.fromRGB(26, 16, 34),
+        Border = Color3.fromRGB(168, 85, 247),
+        Grad1 = Color3.fromRGB(192, 132, 252),
+        Grad2 = Color3.fromRGB(168, 85, 247),
+    }
+}
+
+local CurrentThemeName = "Luxury Gold"
+if readfile and isfile and isfile(THEME_CONFIG_FILE) then
+    local s, saved = pcall(readfile, THEME_CONFIG_FILE)
+    if s and saved and THEMES[saved] then
+        CurrentThemeName = saved
+    end
+end
+local CurrentTheme = THEMES[CurrentThemeName]
+
+-- Quản lý đổi theme trực tiếp cho các đối tượng UI
+local ThemeRegistry = {
+    Borders = {},
+    Accents = {},
+    Lights  = {},
+    Cards   = {},
+    Grads   = {},
+}
+
+local function RegisterThemeObject(category, obj, prop)
+    table.insert(ThemeRegistry[category], { Object = obj, Property = prop or "Color" })
+end
+
+local function ApplyTheme(newThemeName)
+    if not THEMES[newThemeName] then return end
+    CurrentThemeName = newThemeName
+    CurrentTheme = THEMES[newThemeName]
+
+    if writefile then
+        pcall(writefile, THEME_CONFIG_FILE, newThemeName)
+    end
+
+    for _, item in ipairs(ThemeRegistry.Borders) do
+        if item.Object and item.Object.Parent then
+            TweenService:Create(item.Object, TweenInfo.new(0.3), { [item.Property] = CurrentTheme.Border }):Play()
+        end
+    end
+    for _, item in ipairs(ThemeRegistry.Accents) do
+        if item.Object and item.Object.Parent then
+            TweenService:Create(item.Object, TweenInfo.new(0.3), { [item.Property] = CurrentTheme.Accent }):Play()
+        end
+    end
+    for _, item in ipairs(ThemeRegistry.Lights) do
+        if item.Object and item.Object.Parent then
+            TweenService:Create(item.Object, TweenInfo.new(0.3), { [item.Property] = CurrentTheme.Light }):Play()
+        end
+    end
+    for _, item in ipairs(ThemeRegistry.Cards) do
+        if item.Object and item.Object.Parent then
+            TweenService:Create(item.Object, TweenInfo.new(0.3), { [item.Property] = CurrentTheme.BgCard }):Play()
+        end
+    end
+    for _, item in ipairs(ThemeRegistry.Grads) do
+        if item.Object and item.Object.Parent then
+            item.Object.Color = ColorSequence.new({
+                ColorSequenceKeypoint.new(0, CurrentTheme.Grad1),
+                ColorSequenceKeypoint.new(1, CurrentTheme.Grad2),
+            })
+        end
+    end
+end
+
+-- ================= HÀM HỖ TRỢ KÉO THẢ (DRAGGABLE) =================
+local function enableDrag(dragFrame, handleFrame)
+    local dragging, dragInput, dragStart, startPos
+    handleFrame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = dragFrame.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false
+                end
+            end)
+        end
+    end)
+    handleFrame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    UserInputService.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            local delta = input.Position - dragStart
+            dragFrame.Position = UDim2.new(
+                startPos.X.Scale,
+                startPos.X.Offset + delta.X,
+                startPos.Y.Scale,
+                startPos.Y.Offset + delta.Y
+            )
+        end
+    end)
+end
+
+-- ================= KHỞI TẠO CỬA SỔ (CREATE WINDOW) =================
+function UIScriptHub:CreateWindow(config)
+    config = config or {}
+    local WindowName = config.Name or "🌸Cao Tuan Anh Roblox🌸"
+    local WindowSubtitle = config.Subtitle or "YTB Cao Tuan Anh Roblox"
+    local LogoID = config.LogoID or Icons.Logo
+
+    -- Dọn dẹp GUI cũ nếu trùng tên
+    if TargetGuiParent:FindFirstChild("CaoTuanAnh_ScriptHubGUI") then
+        TargetGuiParent.CaoTuanAnh_ScriptHubGUI:Destroy()
+    end
+
+    local ScreenGui = Instance.new("ScreenGui")
+    ScreenGui.Name = "CaoTuanAnh_ScriptHubGUI"
+    ScreenGui.ResetOnSpawn = false
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.Parent = TargetGuiParent
+
+    -- ================= MAIN CARD (CỬA SỔ CHÍNH) =================
+    local MainCard = Instance.new("Frame")
+    MainCard.Name = "MainCard"
+    MainCard.Size = UDim2.new(0, 680, 0, 440)
+    MainCard.Position = UDim2.new(0.5, 0, 0.5, 0)
+    MainCard.AnchorPoint = Vector2.new(0.5, 0.5)
+    MainCard.BackgroundColor3 = CurrentTheme.BgCard
+    MainCard.BackgroundTransparency = 0.05
+    MainCard.BorderSizePixel = 0
+    MainCard.ClipsDescendants = true
+    MainCard.Parent = ScreenGui
+    RegisterThemeObject("Cards", MainCard, "BackgroundColor3")
+
+    local MainCorner = Instance.new("UICorner")
+    MainCorner.CornerRadius = UDim.new(0, 20)
+    MainCorner.Parent = MainCard
+
+    local MainStroke = Instance.new("UIStroke")
+    MainStroke.Thickness = 1.5
+    MainStroke.Color = CurrentTheme.Border
+    MainStroke.Transparency = 0.35
+    MainStroke.Parent = MainCard
+    RegisterThemeObject("Borders", MainStroke, "Color")
+
+    -- Viền sáng trên đỉnh Card
+    local TopGoldLine = Instance.new("Frame")
+    TopGoldLine.Name = "TopGoldLine"
+    TopGoldLine.Size = UDim2.new(1, -36, 0, 2)
+    TopGoldLine.Position = UDim2.new(0, 18, 0, 0)
+    TopGoldLine.BackgroundColor3 = CurrentTheme.Bright
+    TopGoldLine.BorderSizePixel = 0
+    TopGoldLine.ZIndex = 20
+    TopGoldLine.Parent = MainCard
+
+    local TopGoldCorner = Instance.new("UICorner")
+    TopGoldCorner.CornerRadius = UDim.new(1, 0)
+    TopGoldCorner.Parent = TopGoldLine
+
+    local TopGradient = Instance.new("UIGradient")
+    TopGradient.Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, CurrentTheme.Grad1),
+        ColorSequenceKeypoint.new(1, CurrentTheme.Grad2),
+    })
+    TopGradient.Parent = TopGoldLine
+    RegisterThemeObject("Grads", TopGradient)
+
+    -- ================= TOPBAR =================
+    local TopBar = Instance.new("Frame")
+    TopBar.Name = "TopBar"
+    TopBar.Size = UDim2.new(1, 0, 0, 52)
+    TopBar.BackgroundColor3 = Color3.fromRGB(10, 10, 16)
+    TopBar.BackgroundTransparency = 1
+    TopBar.BorderSizePixel = 0
+    TopBar.Parent = MainCard
+
+    local TopBarLine = Instance.new("Frame")
+    TopBarLine.Size = UDim2.new(1, 0, 0, 1)
+    TopBarLine.Position = UDim2.new(0, 0, 1, -1)
+    TopBarLine.BackgroundColor3 = CurrentTheme.Border
+    TopBarLine.BackgroundTransparency = 0.8
+    TopBarLine.BorderSizePixel = 0
+    TopBarLine.Parent = TopBar
+    RegisterThemeObject("Borders", TopBarLine, "BackgroundColor3")
+
+    -- Brand Icon & Info
+    local BrandLogo = Instance.new("ImageLabel")
+    BrandLogo.Name = "BrandLogo"
+    BrandLogo.Size = UDim2.new(0, 32, 0, 32)
+    BrandLogo.Position = UDim2.new(0, 16, 0.5, 0)
+    BrandLogo.AnchorPoint = Vector2.new(0, 0.5)
+    BrandLogo.BackgroundTransparency = 1
+    BrandLogo.Image = LogoID
+    BrandLogo.Parent = TopBar
+
+    local BrandCorner = Instance.new("UICorner")
+    BrandCorner.CornerRadius = UDim.new(0, 8)
+    BrandCorner.Parent = BrandLogo
+
+    local TitleLabel = Instance.new("TextLabel")
+    TitleLabel.Name = "TitleLabel"
+    TitleLabel.Size = UDim2.new(0, 300, 0, 18)
+    TitleLabel.Position = UDim2.new(0, 56, 0, 9)
+    TitleLabel.BackgroundTransparency = 1
+    TitleLabel.Font = Enum.Font.GothamBold
+    TitleLabel.Text = WindowName
+    TitleLabel.TextColor3 = CurrentTheme.Light
+    TitleLabel.TextSize = 14
+    TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    TitleLabel.Parent = TopBar
+    RegisterThemeObject("Lights", TitleLabel, "TextColor3")
+
+    local SubtitleLabel = Instance.new("TextLabel")
+    SubtitleLabel.Name = "SubtitleLabel"
+    SubtitleLabel.Size = UDim2.new(0, 300, 0, 14)
+    SubtitleLabel.Position = UDim2.new(0, 56, 0, 28)
+    SubtitleLabel.BackgroundTransparency = 1
+    SubtitleLabel.Font = Enum.Font.Gotham
+    SubtitleLabel.Text = WindowSubtitle
+    SubtitleLabel.TextColor3 = Color3.fromRGB(148, 163, 184)
+    SubtitleLabel.TextSize = 10.5
+    SubtitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+    SubtitleLabel.Parent = TopBar
+
+    -- Topbar Control Buttons: Thu nhỏ [—] & Đóng [X]
+    local ControlsHolder = Instance.new("Frame")
+    ControlsHolder.Name = "ControlsHolder"
+    ControlsHolder.Size = UDim2.new(0, 70, 0, 32)
+    ControlsHolder.Position = UDim2.new(1, -16, 0.5, 0)
+    ControlsHolder.AnchorPoint = Vector2.new(1, 0.5)
+    ControlsHolder.BackgroundTransparency = 1
+    ControlsHolder.Parent = TopBar
+
+    local ControlsLayout = Instance.new("UIListLayout")
+    ControlsLayout.FillDirection = Enum.FillDirection.Horizontal
+    ControlsLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
+    ControlsLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+    ControlsLayout.Padding = UDim.new(0, 8)
+    ControlsLayout.Parent = ControlsHolder
+
+    local BtnMinimize = Instance.new("ImageButton")
+    BtnMinimize.Name = "BtnMinimize"
+    BtnMinimize.Size = UDim2.new(0, 28, 0, 28)
+    BtnMinimize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    BtnMinimize.BackgroundTransparency = 0.92
+    BtnMinimize.Image = Icons.Minus
+    BtnMinimize.ImageColor3 = Color3.fromRGB(180, 180, 190)
+    BtnMinimize.Parent = ControlsHolder
+
+    local MinCorner = Instance.new("UICorner")
+    MinCorner.CornerRadius = UDim.new(0, 8)
+    MinCorner.Parent = BtnMinimize
+
+    local BtnClose = Instance.new("ImageButton")
+    BtnClose.Name = "BtnClose"
+    BtnClose.Size = UDim2.new(0, 28, 0, 28)
+    BtnClose.BackgroundColor3 = Color3.fromRGB(239, 68, 68)
+    BtnClose.BackgroundTransparency = 0.85
+    BtnClose.Image = Icons.Close
+    BtnClose.ImageColor3 = Color3.fromRGB(239, 68, 68)
+    BtnClose.Parent = ControlsHolder
+
+    local CloseCorner = Instance.new("UICorner")
+    CloseCorner.CornerRadius = UDim.new(0, 8)
+    CloseCorner.Parent = BtnClose
+
+    enableDrag(MainCard, TopBar)
+
+    -- ================= BODY: SIDEBAR & CONTENT =================
+    local BodyFrame = Instance.new("Frame")
+    BodyFrame.Name = "BodyFrame"
+    BodyFrame.Size = UDim2.new(1, 0, 1, -52)
+    BodyFrame.Position = UDim2.new(0, 0, 0, 52)
+    BodyFrame.BackgroundTransparency = 1
+    BodyFrame.Parent = MainCard
+
+    -- Sidebar (Bên trái)
+    local Sidebar = Instance.new("Frame")
+    Sidebar.Name = "Sidebar"
+    Sidebar.Size = UDim2.new(0, 180, 1, 0)
+    Sidebar.BackgroundColor3 = Color3.fromRGB(8, 8, 14)
+    Sidebar.BackgroundTransparency = 1
+    Sidebar.BorderSizePixel = 0
+    Sidebar.Parent = BodyFrame
+
+    local SidebarDivider = Instance.new("Frame")
+    SidebarDivider.Size = UDim2.new(0, 1, 1, 0)
+    SidebarDivider.Position = UDim2.new(1, -1, 0, 0)
+    SidebarDivider.BackgroundColor3 = CurrentTheme.Border
+    SidebarDivider.BackgroundTransparency = 0.85
+    SidebarDivider.BorderSizePixel = 0
+    SidebarDivider.Parent = Sidebar
+    RegisterThemeObject("Borders", SidebarDivider, "BackgroundColor3")
+
+    -- Danh sách Tabs Scroller
+    local TabsHolder = Instance.new("ScrollingFrame")
+    TabsHolder.Name = "TabsHolder"
+    TabsHolder.Size = UDim2.new(1, -16, 1, -78)
+    TabsHolder.Position = UDim2.new(0, 8, 0, 12)
+    TabsHolder.BackgroundTransparency = 1
+    TabsHolder.ScrollBarThickness = 2
+    TabsHolder.ScrollBarImageColor3 = CurrentTheme.Accent
+    TabsHolder.BorderSizePixel = 0
+    TabsHolder.CanvasSize = UDim2.new(0, 0, 0, 0)
+    TabsHolder.Parent = Sidebar
+
+    local TabsLayout = Instance.new("UIListLayout")
+    TabsLayout.FillDirection = Enum.FillDirection.Vertical
+    TabsLayout.Padding = UDim.new(0, 6)
+    TabsLayout.Parent = TabsHolder
+
+    TabsLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        TabsHolder.CanvasSize = UDim2.new(0, 0, 0, TabsLayout.AbsoluteContentSize.Y + 10)
+    end)
+
+    -- ================= USER PROFILE BAR (GÓC DƯỚI SIDEBAR) =================
+    local UserProfileBox = Instance.new("Frame")
+    UserProfileBox.Name = "UserProfileBox"
+    UserProfileBox.Size = UDim2.new(1, -16, 0, 52)
+    UserProfileBox.Position = UDim2.new(0, 8, 1, -60)
+    UserProfileBox.BackgroundColor3 = Color3.fromRGB(12, 12, 18)
+    UserProfileBox.BackgroundTransparency = 0.3
+    UserProfileBox.Parent = Sidebar
+
+    local UserProfileCorner = Instance.new("UICorner")
+    UserProfileCorner.CornerRadius = UDim.new(0, 12)
+    UserProfileCorner.Parent = UserProfileBox
+
+    local UserProfileStroke = Instance.new("UIStroke")
+    UserProfileStroke.Color = CurrentTheme.Border
+    UserProfileStroke.Transparency = 0.75
+    UserProfileStroke.Parent = UserProfileBox
+    RegisterThemeObject("Borders", UserProfileStroke, "Color")
+
+    -- Avatar người chơi Headshot
+    local UserAvatar = Instance.new("ImageLabel")
+    UserAvatar.Name = "UserAvatar"
+    UserAvatar.Size = UDim2.new(0, 36, 0, 36)
+    UserAvatar.Position = UDim2.new(0, 8, 0.5, 0)
+    UserAvatar.AnchorPoint = Vector2.new(0, 0.5)
+    UserAvatar.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+    UserAvatar.BackgroundTransparency = 0.5
+    UserAvatar.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
+    UserAvatar.Parent = UserProfileBox
+
+    local AvatarCorner = Instance.new("UICorner")
+    AvatarCorner.CornerRadius = UDim.new(1, 0)
+    AvatarCorner.Parent = UserAvatar
+
+    -- Nạp ảnh avatar bất đồng bộ an toàn
+    task.spawn(function()
+        pcall(function()
+            local thumbType = Enum.ThumbnailType.HeadShot
+            local thumbSize = Enum.ThumbnailSize.Size100x100
+            local content, isReady = Players:GetUserThumbnailAsync(LocalPlayer.UserId, thumbType, thumbSize)
+            if isReady and content then
+                UserAvatar.Image = content
+            end
+        end)
+    end)
+
+    local DisplayNameLabel = Instance.new("TextLabel")
+    DisplayNameLabel.Name = "DisplayNameLabel"
+    DisplayNameLabel.Size = UDim2.new(1, -54, 0, 16)
+    DisplayNameLabel.Position = UDim2.new(0, 50, 0, 9)
+    DisplayNameLabel.BackgroundTransparency = 1
+    DisplayNameLabel.Font = Enum.Font.GothamBold
+    DisplayNameLabel.Text = LocalPlayer.DisplayName
+    DisplayNameLabel.TextColor3 = CurrentTheme.Light
+    DisplayNameLabel.TextSize = 11.5
+    DisplayNameLabel.TextXAlignment = Enum.TextXAlignment.Left
+    DisplayNameLabel.TextTruncate = Enum.TextTruncate.AtEnd
+    DisplayNameLabel.Parent = UserProfileBox
+    RegisterThemeObject("Lights", DisplayNameLabel, "TextColor3")
+
+    local UsernameLabel = Instance.new("TextLabel")
+    UsernameLabel.Name = "UsernameLabel"
+    UsernameLabel.Size = UDim2.new(1, -54, 0, 14)
+    UsernameLabel.Position = UDim2.new(0, 50, 0, 26)
+    UsernameLabel.BackgroundTransparency = 1
+    UsernameLabel.Font = Enum.Font.Code
+    UsernameLabel.Text = "@" .. LocalPlayer.Name
+    UsernameLabel.TextColor3 = Color3.fromRGB(148, 163, 184)
+    UsernameLabel.TextSize = 9.5
+    UsernameLabel.TextXAlignment = Enum.TextXAlignment.Left
+    UsernameLabel.TextTruncate = Enum.TextTruncate.AtEnd
+    UsernameLabel.Parent = UserProfileBox
+
+    -- Content Area (Bên phải)
+    local ContentHolder = Instance.new("Frame")
+    ContentHolder.Name = "ContentHolder"
+    ContentHolder.Size = UDim2.new(1, -180, 1, 0)
+    ContentHolder.Position = UDim2.new(0, 180, 0, 0)
+    ContentHolder.BackgroundTransparency = 1
+    ContentHolder.ClipsDescendants = true
+    ContentHolder.Parent = BodyFrame
+
+    -- ================= DIALOG POPUP: ĐÓNG HOÀN TOÀN HAY THU NHỎ =================
+    local CloseDialogOverlay = Instance.new("Frame")
+    CloseDialogOverlay.Name = "CloseDialogOverlay"
+    CloseDialogOverlay.Size = UDim2.new(1, 0, 1, 0)
+    CloseDialogOverlay.BackgroundColor3 = Color3.fromRGB(6, 6, 9)
+    CloseDialogOverlay.BackgroundTransparency = 0.2
+    CloseDialogOverlay.ZIndex = 50
+    CloseDialogOverlay.Visible = false
+    CloseDialogOverlay.Parent = MainCard
+
+    local OverlayCorner = Instance.new("UICorner")
+    OverlayCorner.CornerRadius = UDim.new(0, 20)
+    OverlayCorner.Parent = CloseDialogOverlay
+
+    local DialogCard = Instance.new("Frame")
+    DialogCard.Name = "DialogCard"
+    DialogCard.Size = UDim2.new(0, 380, 0, 210)
+    DialogCard.Position = UDim2.new(0.5, 0, 0.5, 0)
+    DialogCard.AnchorPoint = Vector2.new(0.5, 0.5)
+    DialogCard.BackgroundColor3 = Color3.fromRGB(14, 14, 22)
+    DialogCard.BorderSizePixel = 0
+    DialogCard.ZIndex = 51
+    DialogCard.Parent = CloseDialogOverlay
+
+    local DialogCorner = Instance.new("UICorner")
+    DialogCorner.CornerRadius = UDim.new(0, 18)
+    DialogCorner.Parent = DialogCard
+
+    local DialogStroke = Instance.new("UIStroke")
+    DialogStroke.Color = CurrentTheme.Border
+    DialogStroke.Thickness = 1.5
+    DialogStroke.Parent = DialogCard
+    RegisterThemeObject("Borders", DialogStroke, "Color")
+
+    local DialogTitle = Instance.new("TextLabel")
+    DialogTitle.Size = UDim2.new(1, -30, 0, 24)
+    DialogTitle.Position = UDim2.new(0, 15, 0, 16)
+    DialogTitle.BackgroundTransparency = 1
+    DialogTitle.Font = Enum.Font.GothamBold
+    DialogTitle.Text = "Tùy Chọn Đóng Giao Diện"
+    DialogTitle.TextColor3 = CurrentTheme.Light
+    DialogTitle.TextSize = 16
+    DialogTitle.ZIndex = 52
+    DialogTitle.Parent = DialogCard
+    RegisterThemeObject("Lights", DialogTitle, "TextColor3")
+
+    local DialogDesc = Instance.new("TextLabel")
+    DialogDesc.Size = UDim2.new(1, -30, 0, 36)
+    DialogDesc.Position = UDim2.new(0, 15, 0, 42)
+    DialogDesc.BackgroundTransparency = 1
+    DialogDesc.Font = Enum.Font.Gotham
+    DialogDesc.Text = "Bạn có muốn thu nhỏ giao diện thành biểu tượng nổi trên màn hình hay thoát hoàn toàn script?"
+    DialogDesc.TextColor3 = Color3.fromRGB(148, 163, 184)
+    DialogDesc.TextSize = 12
+    DialogDesc.TextWrapped = true
+    DialogDesc.ZIndex = 52
+    DialogDesc.Parent = DialogCard
+
+    -- 2 Nút lựa chọn: Thu nhỏ và Thoát hoàn toàn
+    local BtnChoiceMinimize = Instance.new("TextButton")
+    BtnChoiceMinimize.Size = UDim2.new(1, -30, 0, 38)
+    BtnChoiceMinimize.Position = UDim2.new(0, 15, 0, 88)
+    BtnChoiceMinimize.BackgroundColor3 = CurrentTheme.Accent
+    BtnChoiceMinimize.BackgroundTransparency = 0.25
+    BtnChoiceMinimize.Font = Enum.Font.GothamBold
+    BtnChoiceMinimize.Text = "⚡  Thu Nhỏ Thành Nút Nổi"
+    BtnChoiceMinimize.TextColor3 = Color3.fromRGB(10, 10, 16)
+    BtnChoiceMinimize.TextSize = 13
+    BtnChoiceMinimize.ZIndex = 52
+    BtnChoiceMinimize.Parent = DialogCard
+    RegisterThemeObject("Accents", BtnChoiceMinimize, "BackgroundColor3")
+
+    local ChoiceMinCorner = Instance.new("UICorner")
+    ChoiceMinCorner.CornerRadius = UDim.new(0, 10)
+    ChoiceMinCorner.Parent = BtnChoiceMinimize
+
+    local BtnChoiceDestroy = Instance.new("TextButton")
+    BtnChoiceDestroy.Size = UDim2.new(0.58, -18, 0, 34)
+    BtnChoiceDestroy.Position = UDim2.new(0, 15, 0, 134)
+    BtnChoiceDestroy.BackgroundColor3 = Color3.fromRGB(239, 68, 68)
+    BtnChoiceDestroy.BackgroundTransparency = 0.35
+    BtnChoiceDestroy.Font = Enum.Font.GothamBold
+    BtnChoiceDestroy.Text = "🚪  Đóng Hoàn Toàn"
+    BtnChoiceDestroy.TextColor3 = Color3.fromRGB(255, 255, 255)
+    BtnChoiceDestroy.TextSize = 12
+    BtnChoiceDestroy.ZIndex = 52
+    BtnChoiceDestroy.Parent = DialogCard
+
+    local ChoiceDesCorner = Instance.new("UICorner")
+    ChoiceDesCorner.CornerRadius = UDim.new(0, 10)
+    ChoiceDesCorner.Parent = BtnChoiceDestroy
+
+    local BtnChoiceCancel = Instance.new("TextButton")
+    BtnChoiceCancel.Size = UDim2.new(0.42, -18, 0, 34)
+    BtnChoiceCancel.Position = UDim2.new(0.58, 3, 0, 134)
+    BtnChoiceCancel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    BtnChoiceCancel.BackgroundTransparency = 0.92
+    BtnChoiceCancel.Font = Enum.Font.GothamMedium
+    BtnChoiceCancel.Text = "Hủy Bỏ"
+    BtnChoiceCancel.TextColor3 = Color3.fromRGB(160, 160, 175)
+    BtnChoiceCancel.TextSize = 12
+    BtnChoiceCancel.ZIndex = 52
+    BtnChoiceCancel.Parent = DialogCard
+
+    local ChoiceCancelCorner = Instance.new("UICorner")
+    ChoiceCancelCorner.CornerRadius = UDim.new(0, 10)
+    ChoiceCancelCorner.Parent = BtnChoiceCancel
+
+    local function showCloseDialog()
+        CloseDialogOverlay.Visible = true
+        CloseDialogOverlay.BackgroundTransparency = 1
+        DialogCard.Position = UDim2.new(0.5, 0, 0.5, 20)
+        DialogCard.Size = UDim2.new(0, 350, 0, 190)
+
+        TweenService:Create(CloseDialogOverlay, TweenInfo.new(0.25), { BackgroundTransparency = 0.25 }):Play()
+        TweenService:Create(DialogCard, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+            Position = UDim2.new(0.5, 0, 0.5, 0),
+            Size = UDim2.new(0, 380, 0, 210)
+        }):Play()
+    end
+
+    local function hideCloseDialog()
+        TweenService:Create(CloseDialogOverlay, TweenInfo.new(0.2), { BackgroundTransparency = 1 }):Play()
+        TweenService:Create(DialogCard, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {
+            Position = UDim2.new(0.5, 0, 0.5, 20)
+        }):Play()
+        task.wait(0.22)
+        CloseDialogOverlay.Visible = false
+    end
+
+    BtnClose.MouseButton1Click:Connect(showCloseDialog)
+    BtnChoiceCancel.MouseButton1Click:Connect(hideCloseDialog)
+
+    -- ================= FLOATING MINI WIDGET (NÚT TRÒN NỔI TỰ DO) =================
+    local FloatingWidget = Instance.new("Frame")
+    FloatingWidget.Name = "FloatingWidget"
+    FloatingWidget.Size = UDim2.new(0, 52, 0, 52)
+    FloatingWidget.Position = UDim2.new(0.92, -30, 0.15, 0)
+    FloatingWidget.BackgroundColor3 = CurrentTheme.BgCard
+    FloatingWidget.BackgroundTransparency = 0.1
+    FloatingWidget.Visible = false
+    FloatingWidget.ZIndex = 60
+    FloatingWidget.Parent = ScreenGui
+    RegisterThemeObject("Cards", FloatingWidget, "BackgroundColor3")
+
+    local WidgetCorner = Instance.new("UICorner")
+    WidgetCorner.CornerRadius = UDim.new(1, 0)
+    WidgetCorner.Parent = FloatingWidget
+
+    local WidgetStroke = Instance.new("UIStroke")
+    WidgetStroke.Color = CurrentTheme.Bright
+    WidgetStroke.Thickness = 2
+    WidgetStroke.Parent = FloatingWidget
+    RegisterThemeObject("Borders", WidgetStroke, "Color")
+
+    local WidgetLogo = Instance.new("ImageLabel")
+    WidgetLogo.Size = UDim2.new(1, -12, 1, -12)
+    WidgetLogo.Position = UDim2.new(0.5, 0, 0.5, 0)
+    WidgetLogo.AnchorPoint = Vector2.new(0.5, 0.5)
+    WidgetLogo.BackgroundTransparency = 1
+    WidgetLogo.Image = LogoID
+    WidgetLogo.ZIndex = 61
+    WidgetLogo.Parent = FloatingWidget
+
+    local WidgetLogoCorner = Instance.new("UICorner")
+    WidgetLogoCorner.CornerRadius = UDim.new(1, 0)
+    WidgetLogoCorner.Parent = WidgetLogo
+
+    enableDrag(FloatingWidget, FloatingWidget)
+
+    -- Khung chứa 2 nút vệ tinh bung ra từ nút nổi
+    local SubButtonsContainer = Instance.new("Frame")
+    SubButtonsContainer.Name = "SubButtonsContainer"
+    SubButtonsContainer.Size = UDim2.new(0, 180, 0, 110)
+    SubButtonsContainer.Position = UDim2.new(0, -190, 0.5, -55)
+    SubButtonsContainer.BackgroundTransparency = 1
+    SubButtonsContainer.ZIndex = 62
+    SubButtonsContainer.Visible = false
+    SubButtonsContainer.Parent = FloatingWidget
+
+    local SubButtonsLayout = Instance.new("UIListLayout")
+    SubButtonsLayout.FillDirection = Enum.FillDirection.Vertical
+    SubButtonsLayout.Padding = UDim.new(0, 8)
+    SubButtonsLayout.Parent = SubButtonsContainer
+
+    -- Vệ tinh 1: Nút Mở Giao Diện (Open GUI)
+    local SubBtnOpen = Instance.new("TextButton")
+    SubBtnOpen.Name = "SubBtnOpen"
+    SubBtnOpen.Size = UDim2.new(1, 0, 0, 48)
+    SubBtnOpen.BackgroundColor3 = Color3.fromRGB(14, 14, 22)
+    SubBtnOpen.BackgroundTransparency = 0.15
+    SubBtnOpen.Text = ""
+    SubBtnOpen.ZIndex = 63
+    SubBtnOpen.Parent = SubButtonsContainer
+
+    local SubOpenCorner = Instance.new("UICorner")
+    SubOpenCorner.CornerRadius = UDim.new(0, 12)
+    SubOpenCorner.Parent = SubBtnOpen
+
+    local SubOpenStroke = Instance.new("UIStroke")
+    SubOpenStroke.Color = CurrentTheme.Border
+    SubOpenStroke.Thickness = 1.2
+    SubOpenStroke.Parent = SubBtnOpen
+    RegisterThemeObject("Borders", SubOpenStroke, "Color")
+
+    local SubOpenIcon = Instance.new("ImageLabel")
+    SubOpenIcon.Size = UDim2.new(0, 22, 0, 22)
+    SubOpenIcon.Position = UDim2.new(0, 10, 0.5, 0)
+    SubOpenIcon.AnchorPoint = Vector2.new(0, 0.5)
+    SubOpenIcon.BackgroundTransparency = 1
+    SubOpenIcon.Image = Icons.External
+    SubOpenIcon.ImageColor3 = CurrentTheme.Bright
+    SubOpenIcon.ZIndex = 64
+    SubOpenIcon.Parent = SubBtnOpen
+    RegisterThemeObject("Borders", SubOpenIcon, "ImageColor3")
+
+    local SubOpenTitle = Instance.new("TextLabel")
+    SubOpenTitle.Size = UDim2.new(1, -40, 0, 16)
+    SubOpenTitle.Position = UDim2.new(0, 38, 0, 7)
+    SubOpenTitle.BackgroundTransparency = 1
+    SubOpenTitle.Font = Enum.Font.GothamBold
+    SubOpenTitle.Text = "Mở Giao Diện"
+    SubOpenTitle.TextColor3 = CurrentTheme.Light
+    SubOpenTitle.TextSize = 12
+    SubOpenTitle.TextXAlignment = Enum.TextXAlignment.Left
+    SubOpenTitle.ZIndex = 64
+    SubOpenTitle.Parent = SubBtnOpen
+    RegisterThemeObject("Lights", SubOpenTitle, "TextColor3")
+
+    local SubOpenDesc = Instance.new("TextLabel")
+    SubOpenDesc.Size = UDim2.new(1, -40, 0, 14)
+    SubOpenDesc.Position = UDim2.new(0, 38, 0, 24)
+    SubOpenDesc.BackgroundTransparency = 1
+    SubOpenDesc.Font = Enum.Font.Gotham
+    SubOpenDesc.Text = "Khôi phục cửa sổ Hub"
+    SubOpenDesc.TextColor3 = Color3.fromRGB(148, 163, 184)
+    SubOpenDesc.TextSize = 9.5
+    SubOpenDesc.TextXAlignment = Enum.TextXAlignment.Left
+    SubOpenDesc.ZIndex = 64
+    SubOpenDesc.Parent = SubBtnOpen
+
+    -- Vệ tinh 2: Nút Đóng Hoàn Toàn (Destroy Script)
+    local SubBtnDestroy = Instance.new("TextButton")
+    SubBtnDestroy.Name = "SubBtnDestroy"
+    SubBtnDestroy.Size = UDim2.new(1, 0, 0, 48)
+    SubBtnDestroy.BackgroundColor3 = Color3.fromRGB(24, 10, 12)
+    SubBtnDestroy.BackgroundTransparency = 0.15
+    SubBtnDestroy.Text = ""
+    SubBtnDestroy.ZIndex = 63
+    SubBtnDestroy.Parent = SubButtonsContainer
+
+    local SubDestroyCorner = Instance.new("UICorner")
+    SubDestroyCorner.CornerRadius = UDim.new(0, 12)
+    SubDestroyCorner.Parent = SubBtnDestroy
+
+    local SubDestroyStroke = Instance.new("UIStroke")
+    SubDestroyStroke.Color = Color3.fromRGB(239, 68, 68)
+    SubDestroyStroke.Thickness = 1.2
+    SubDestroyStroke.Parent = SubBtnDestroy
+
+    local SubDestroyIcon = Instance.new("ImageLabel")
+    SubDestroyIcon.Size = UDim2.new(0, 22, 0, 22)
+    SubDestroyIcon.Position = UDim2.new(0, 10, 0.5, 0)
+    SubDestroyIcon.AnchorPoint = Vector2.new(0, 0.5)
+    SubDestroyIcon.BackgroundTransparency = 1
+    SubDestroyIcon.Image = Icons.Exit
+    SubDestroyIcon.ImageColor3 = Color3.fromRGB(239, 68, 68)
+    SubDestroyIcon.ZIndex = 64
+    SubDestroyIcon.Parent = SubBtnDestroy
+
+    local SubDestroyTitle = Instance.new("TextLabel")
+    SubDestroyTitle.Size = UDim2.new(1, -40, 0, 16)
+    SubDestroyTitle.Position = UDim2.new(0, 38, 0, 7)
+    SubDestroyTitle.BackgroundTransparency = 1
+    SubDestroyTitle.Font = Enum.Font.GothamBold
+    SubDestroyTitle.Text = "Thoát Hoàn Toàn"
+    SubDestroyTitle.TextColor3 = Color3.fromRGB(254, 202, 202)
+    SubDestroyTitle.TextSize = 12
+    SubDestroyTitle.TextXAlignment = Enum.TextXAlignment.Left
+    SubDestroyTitle.ZIndex = 64
+    SubDestroyTitle.Parent = SubBtnDestroy
+
+    local SubDestroyDesc = Instance.new("TextLabel")
+    SubDestroyDesc.Size = UDim2.new(1, -40, 0, 14)
+    SubDestroyDesc.Position = UDim2.new(0, 38, 0, 24)
+    SubDestroyDesc.BackgroundTransparency = 1
+    SubDestroyDesc.Font = Enum.Font.Gotham
+    SubDestroyDesc.Text = "Xóa GUI và dọn bộ nhớ"
+    SubDestroyDesc.TextColor3 = Color3.fromRGB(180, 130, 130)
+    SubDestroyDesc.TextSize = 9.5
+    SubDestroyDesc.TextXAlignment = Enum.TextXAlignment.Left
+    SubDestroyDesc.ZIndex = 64
+    SubDestroyDesc.Parent = SubBtnDestroy
+
+    -- Logic chuyển sang Floating Widget
+    local function switchToFloatingWidget()
+        hideCloseDialog()
+        TweenService:Create(MainCard, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+            Size = UDim2.new(0, 100, 0, 60),
+            Position = FloatingWidget.Position,
+            BackgroundTransparency = 1
+        }):Play()
+        task.wait(0.36)
+        MainCard.Visible = false
+
+        FloatingWidget.Visible = true
+        FloatingWidget.Size = UDim2.new(0, 10, 0, 10)
+        TweenService:Create(FloatingWidget, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+            Size = UDim2.new(0, 52, 0, 52)
+        }):Play()
+    end
+
+    local function restoreFromFloatingWidget()
+        -- Co thu 2 nút vệ tinh lại
+        SubButtonsContainer.Visible = false
+        TweenService:Create(FloatingWidget, TweenInfo.new(0.25, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+            Size = UDim2.new(0, 10, 0, 10)
+        }):Play()
+        task.wait(0.26)
+        FloatingWidget.Visible = false
+
+        MainCard.Visible = true
+        MainCard.Size = UDim2.new(0, 300, 0, 180)
+        MainCard.Position = UDim2.new(0.5, 0, 0.5, 0)
+        MainCard.BackgroundTransparency = 0.05
+        TweenService:Create(MainCard, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+            Size = UDim2.new(0, 680, 0, 440)
+        }):Play()
+    end
+
+    local function destroyCompletely()
+        hideCloseDialog()
+        TweenService:Create(MainCard, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+            Size = UDim2.new(0, 200, 0, 100),
+            BackgroundTransparency = 1
+        }):Play()
+        task.wait(0.32)
+        ScreenGui:Destroy()
+    end
+
+    BtnChoiceMinimize.MouseButton1Click:Connect(switchToFloatingWidget)
+    BtnMinimize.MouseButton1Click:Connect(switchToFloatingWidget)
+    BtnChoiceDestroy.MouseButton1Click:Connect(destroyCompletely)
+
+    -- Toggle bung 2 nút con khi click vào Floating Widget
+    local isSubExpanded = false
+    WidgetLogo.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+            -- Hiệu ứng Pop Bounce
+            TweenService:Create(FloatingWidget, TweenInfo.new(0.12, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+                Size = UDim2.new(0, 60, 0, 60)
+            }):Play()
+            task.delay(0.12, function()
+                TweenService:Create(FloatingWidget, TweenInfo.new(0.15, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+                    Size = UDim2.new(0, 52, 0, 52)
+                }):Play()
+            end)
+
+            isSubExpanded = not isSubExpanded
+            if isSubExpanded then
+                SubButtonsContainer.Visible = true
+                SubButtonsContainer.Position = UDim2.new(0, -100, 0.5, -55)
+                TweenService:Create(SubButtonsContainer, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+                    Position = UDim2.new(0, -190, 0.5, -55)
+                }):Play()
+            else
+                TweenService:Create(SubButtonsContainer, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                    Position = UDim2.new(0, -100, 0.5, -55)
+                }):Play()
+                task.delay(0.2, function()
+                    if not isSubExpanded then
+                        SubButtonsContainer.Visible = false
+                    end
+                end)
+            end
+        end
+    end)
+
+    SubBtnOpen.MouseButton1Click:Connect(function()
+        isSubExpanded = false
+        restoreFromFloatingWidget()
+    end)
+
+    SubBtnDestroy.MouseButton1Click:Connect(function()
+        ScreenGui:Destroy()
+    end)
+
+    -- ================= WINDOW OBJECT IMPLEMENTATION =================
+    local Window = {
+        ScreenGui = ScreenGui,
+        MainCard = MainCard,
+        ContentHolder = ContentHolder,
+        TabsHolder = TabsHolder,
+        Tabs = {},
+        ActiveTab = nil,
+    }
+
+    -- ================= TAB CREATION =================
+    function Window:CreateTab(tabConfig)
+        tabConfig = tabConfig or {}
+        local TabName = tabConfig.Name or "Tab Mới"
+        local TabIcon = tabConfig.Icon or "Terminal"
+
+        -- Mapping icon linh hoạt
+        local resolvedIcon = Icons[TabIcon] or Icons.Terminal
+        if TabIcon == "view_in_ar" or TabIcon == "Terminal" then
+            resolvedIcon = Icons.Terminal
+        elseif TabIcon == "palette" then
+            resolvedIcon = Icons.Palette
+        elseif TabIcon == "settings" then
+            resolvedIcon = Icons.Settings
+        elseif TabIcon == "notifications_active" then
+            resolvedIcon = Icons.Bell
+        end
+
+        -- Nút Tab ở Sidebar
+        local TabButton = Instance.new("TextButton")
+        TabButton.Name = "Tab_" .. TabName
+        TabButton.Size = UDim2.new(1, 0, 0, 36)
+        TabButton.BackgroundColor3 = Color3.fromRGB(20, 20, 30)
+        TabButton.BackgroundTransparency = 0.9
+        TabButton.Text = ""
+        TabButton.Parent = TabsHolder
+
+        local TabBtnCorner = Instance.new("UICorner")
+        TabBtnCorner.CornerRadius = UDim.new(0, 10)
+        TabBtnCorner.Parent = TabButton
+
+        local TabBtnStroke = Instance.new("UIStroke")
+        TabBtnStroke.Name = "TabBtnStroke"
+        TabBtnStroke.Color = CurrentTheme.Border
+        TabBtnStroke.Transparency = 1
+        TabBtnStroke.Parent = TabButton
+
+        local TabBtnIcon = Instance.new("ImageLabel")
+        TabBtnIcon.Name = "TabBtnIcon"
+        TabBtnIcon.Size = UDim2.new(0, 18, 0, 18)
+        TabBtnIcon.Position = UDim2.new(0, 10, 0.5, 0)
+        TabBtnIcon.AnchorPoint = Vector2.new(0, 0.5)
+        TabBtnIcon.BackgroundTransparency = 1
+        TabBtnIcon.Image = resolvedIcon
+        TabBtnIcon.ImageColor3 = Color3.fromRGB(148, 163, 184)
+        TabBtnIcon.Parent = TabButton
+
+        local TabBtnText = Instance.new("TextLabel")
+        TabBtnText.Name = "TabBtnText"
+        TabBtnText.Size = UDim2.new(1, -38, 1, 0)
+        TabBtnText.Position = UDim2.new(0, 34, 0, 0)
+        TabBtnText.BackgroundTransparency = 1
+        TabBtnText.Font = Enum.Font.GothamMedium
+        TabBtnText.Text = TabName
+        TabBtnText.TextColor3 = Color3.fromRGB(148, 163, 184)
+        TabBtnText.TextSize = 12
+        TabBtnText.TextXAlignment = Enum.TextXAlignment.Left
+        TabBtnText.Parent = TabButton
+
+        -- Trang nội dung của Tab
+        local TabPage = Instance.new("ScrollingFrame")
+        TabPage.Name = "Page_" .. TabName
+        TabPage.Size = UDim2.new(1, -20, 1, -20)
+        TabPage.Position = UDim2.new(0, 10, 0, 10)
+        TabPage.BackgroundTransparency = 1
+        TabPage.ScrollBarThickness = 3
+        TabPage.ScrollBarImageColor3 = CurrentTheme.Accent
+        TabPage.BorderSizePixel = 0
+        TabPage.CanvasSize = UDim2.new(0, 0, 0, 0)
+        TabPage.Visible = false
+        TabPage.Parent = ContentHolder
+
+        local PageLayout = Instance.new("UIListLayout")
+        PageLayout.FillDirection = Enum.FillDirection.Vertical
+        PageLayout.Padding = UDim.new(0, 8)
+        PageLayout.Parent = TabPage
+
+        PageLayout:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+            TabPage.CanvasSize = UDim2.new(0, 0, 0, PageLayout.AbsoluteContentSize.Y + 15)
+        end)
+
+        local TabObj = {
+            Button = TabButton,
+            Page = TabPage,
+            Name = TabName,
+            Stroke = TabBtnStroke,
+            Icon = TabBtnIcon,
+            Text = TabBtnText,
+        }
+
+        local function activateTab()
+            for _, other in pairs(Window.Tabs) do
+                other.Page.Visible = false
+                other.Button.BackgroundTransparency = 0.9
+                if other.Stroke then
+                    other.Stroke.Transparency = 1
+                elseif other.Button:FindFirstChild("TabBtnStroke") then
+                    other.Button.TabBtnStroke.Transparency = 1
+                end
+                if other.Icon then
+                    other.Icon.ImageColor3 = Color3.fromRGB(148, 163, 184)
+                elseif other.Button:FindFirstChild("TabBtnIcon") then
+                    other.Button.TabBtnIcon.ImageColor3 = Color3.fromRGB(148, 163, 184)
+                end
+                if other.Text then
+                    other.Text.TextColor3 = Color3.fromRGB(148, 163, 184)
+                elseif other.Button:FindFirstChild("TabBtnText") then
+                    other.Button.TabBtnText.TextColor3 = Color3.fromRGB(148, 163, 184)
+                end
+            end
+            TabPage.Visible = true
+            TabButton.BackgroundTransparency = 0.2
+            TabButton.BackgroundColor3 = CurrentTheme.Accent
+            TabBtnStroke.Transparency = 0.4
+            TabBtnStroke.Color = CurrentTheme.Bright
+            TabBtnIcon.ImageColor3 = Color3.fromRGB(10, 10, 16)
+            TabBtnText.TextColor3 = Color3.fromRGB(10, 10, 16)
+            Window.ActiveTab = TabObj
+        end
+
+        TabButton.MouseButton1Click:Connect(activateTab)
+
+        -- ================= CÁC THÀNH PHẦN CONTROLS TRONG TAB =================
+        function TabObj:CreateButton(btnConfig)
+            btnConfig = btnConfig or {}
+            local Name = btnConfig.Name or "Nút Bấm"
+            local Desc = btnConfig.Description or ""
+            local Callback = btnConfig.Callback or function() end
+
+            local BtnFrame = Instance.new("Frame")
+            BtnFrame.Size = UDim2.new(1, -6, 0, Desc ~= "" and 52 or 40)
+            BtnFrame.BackgroundColor3 = CurrentTheme.BgInner
+            BtnFrame.BackgroundTransparency = 0.35
+            BtnFrame.Parent = TabPage
+
+            local FrameCorner = Instance.new("UICorner")
+            FrameCorner.CornerRadius = UDim.new(0, 10)
+            FrameCorner.Parent = BtnFrame
+
+            local FrameStroke = Instance.new("UIStroke")
+            FrameStroke.Color = CurrentTheme.Border
+            FrameStroke.Transparency = 0.75
+            FrameStroke.Parent = BtnFrame
+
+            local BtnTitle = Instance.new("TextLabel")
+            BtnTitle.Size = UDim2.new(1, -85, 0, 18)
+            BtnTitle.Position = UDim2.new(0, 14, 0, Desc ~= "" and 8 or 11)
+            BtnTitle.BackgroundTransparency = 1
+            BtnTitle.Font = Enum.Font.GothamBold
+            BtnTitle.Text = Name
+            BtnTitle.TextColor3 = Color3.fromRGB(248, 250, 252)
+            BtnTitle.TextSize = 13
+            BtnTitle.TextXAlignment = Enum.TextXAlignment.Left
+            BtnTitle.Parent = BtnFrame
+
+            if Desc ~= "" then
+                local BtnDesc = Instance.new("TextLabel")
+                BtnDesc.Size = UDim2.new(1, -85, 0, 14)
+                BtnDesc.Position = UDim2.new(0, 14, 0, 28)
+                BtnDesc.BackgroundTransparency = 1
+                BtnDesc.Font = Enum.Font.Gotham
+                BtnDesc.Text = Desc
+                BtnDesc.TextColor3 = Color3.fromRGB(148, 163, 184)
+                BtnDesc.TextSize = 10.5
+                BtnDesc.TextXAlignment = Enum.TextXAlignment.Left
+                BtnDesc.Parent = BtnFrame
+            end
+
+            local ActionBtn = Instance.new("TextButton")
+            ActionBtn.Size = UDim2.new(0, 60, 0, 26)
+            ActionBtn.Position = UDim2.new(1, -70, 0.5, 0)
+            ActionBtn.AnchorPoint = Vector2.new(0, 0.5)
+            ActionBtn.BackgroundColor3 = CurrentTheme.Accent
+            ActionBtn.BackgroundTransparency = 0.2
+            ActionBtn.Font = Enum.Font.GothamBold
+            ActionBtn.Text = "Chạy"
+            ActionBtn.TextColor3 = Color3.fromRGB(10, 10, 16)
+            ActionBtn.TextSize = 11.5
+            ActionBtn.Parent = BtnFrame
+
+            local ActionCorner = Instance.new("UICorner")
+            ActionCorner.CornerRadius = UDim.new(0, 7)
+            ActionCorner.Parent = ActionBtn
+
+            ActionBtn.MouseButton1Click:Connect(function()
+                TweenService:Create(ActionBtn, TweenInfo.new(0.1), { Size = UDim2.new(0, 54, 0, 24) }):Play()
+                task.delay(0.1, function()
+                    TweenService:Create(ActionBtn, TweenInfo.new(0.15, Enum.EasingStyle.Back), { Size = UDim2.new(0, 60, 0, 26) }):Play()
+                end)
+                pcall(Callback)
+            end)
+
+            return BtnFrame
+        end
+
+        function TabObj:CreateToggle(toggleConfig)
+            toggleConfig = toggleConfig or {}
+            local Name = toggleConfig.Name or "Toggle"
+            local Desc = toggleConfig.Description or ""
+            local State = toggleConfig.Default or false
+            local Callback = toggleConfig.Callback or function() end
+
+            local Frame = Instance.new("Frame")
+            Frame.Size = UDim2.new(1, -6, 0, Desc ~= "" and 52 or 40)
+            Frame.BackgroundColor3 = CurrentTheme.BgInner
+            Frame.BackgroundTransparency = 0.35
+            Frame.Parent = TabPage
+
+            local Corner = Instance.new("UICorner")
+            Corner.CornerRadius = UDim.new(0, 10)
+            Corner.Parent = Frame
+
+            local Stroke = Instance.new("UIStroke")
+            Stroke.Color = CurrentTheme.Border
+            Stroke.Transparency = 0.75
+            Stroke.Parent = Frame
+
+            local Title = Instance.new("TextLabel")
+            Title.Size = UDim2.new(1, -70, 0, 18)
+            Title.Position = UDim2.new(0, 14, 0, Desc ~= "" and 8 or 11)
+            Title.BackgroundTransparency = 1
+            Title.Font = Enum.Font.GothamBold
+            Title.Text = Name
+            Title.TextColor3 = Color3.fromRGB(248, 250, 252)
+            Title.TextSize = 13
+            Title.TextXAlignment = Enum.TextXAlignment.Left
+            Title.Parent = Frame
+
+            if Desc ~= "" then
+                local Sub = Instance.new("TextLabel")
+                Sub.Size = UDim2.new(1, -70, 0, 14)
+                Sub.Position = UDim2.new(0, 14, 0, 28)
+                Sub.BackgroundTransparency = 1
+                Sub.Font = Enum.Font.Gotham
+                Sub.Text = Desc
+                Sub.TextColor3 = Color3.fromRGB(148, 163, 184)
+                Sub.TextSize = 10.5
+                Sub.TextXAlignment = Enum.TextXAlignment.Left
+                Sub.Parent = Frame
+            end
+
+            -- Toggle Pill
+            local ToggleBg = Instance.new("TextButton")
+            ToggleBg.Size = UDim2.new(0, 42, 0, 22)
+            ToggleBg.Position = UDim2.new(1, -54, 0.5, 0)
+            ToggleBg.AnchorPoint = Vector2.new(0, 0.5)
+            ToggleBg.BackgroundColor3 = State and CurrentTheme.Accent or Color3.fromRGB(25, 25, 35)
+            ToggleBg.Text = ""
+            ToggleBg.Parent = Frame
+
+            local ToggleCorner = Instance.new("UICorner")
+            ToggleCorner.CornerRadius = UDim.new(1, 0)
+            ToggleCorner.Parent = ToggleBg
+
+            local ToggleDot = Instance.new("Frame")
+            ToggleDot.Size = UDim2.new(0, 16, 0, 16)
+            ToggleDot.Position = UDim2.new(0, State and 23 or 3, 0.5, 0)
+            ToggleDot.AnchorPoint = Vector2.new(0, 0.5)
+            ToggleDot.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+            ToggleDot.Parent = ToggleBg
+
+            local DotCorner = Instance.new("UICorner")
+            DotCorner.CornerRadius = UDim.new(1, 0)
+            DotCorner.Parent = ToggleDot
+
+            local function updateToggle()
+                TweenService:Create(ToggleBg, TweenInfo.new(0.2), {
+                    BackgroundColor3 = State and CurrentTheme.Accent or Color3.fromRGB(25, 25, 35)
+                }):Play()
+                TweenService:Create(ToggleDot, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {
+                    Position = UDim2.new(0, State and 23 or 3, 0.5, 0)
+                }):Play()
+                pcall(Callback, State)
+            end
+
+            ToggleBg.MouseButton1Click:Connect(function()
+                State = not State
+                updateToggle()
+            end)
+
+            return Frame
+        end
+
+        function TabObj:CreateSlider(sliderConfig)
+            sliderConfig = sliderConfig or {}
+            local Name = sliderConfig.Name or "Slider"
+            local Min = sliderConfig.Min or 0
+            local Max = sliderConfig.Max or 100
+            local Val = sliderConfig.Default or Min
+            local Rounding = sliderConfig.Rounding or 0
+            local Callback = sliderConfig.Callback or function() end
+
+            local Frame = Instance.new("Frame")
+            Frame.Size = UDim2.new(1, -6, 0, 56)
+            Frame.BackgroundColor3 = CurrentTheme.BgInner
+            Frame.BackgroundTransparency = 0.35
+            Frame.Parent = TabPage
+
+            local Corner = Instance.new("UICorner")
+            Corner.CornerRadius = UDim.new(0, 10)
+            Corner.Parent = Frame
+
+            local Stroke = Instance.new("UIStroke")
+            Stroke.Color = CurrentTheme.Border
+            Stroke.Transparency = 0.75
+            Stroke.Parent = Frame
+
+            local Title = Instance.new("TextLabel")
+            Title.Size = UDim2.new(0.7, 0, 0, 18)
+            Title.Position = UDim2.new(0, 14, 0, 8)
+            Title.BackgroundTransparency = 1
+            Title.Font = Enum.Font.GothamBold
+            Title.Text = Name
+            Title.TextColor3 = Color3.fromRGB(248, 250, 252)
+            Title.TextSize = 13
+            Title.TextXAlignment = Enum.TextXAlignment.Left
+            Title.Parent = Frame
+
+            local ValLabel = Instance.new("TextLabel")
+            ValLabel.Size = UDim2.new(0.3, -14, 0, 18)
+            ValLabel.Position = UDim2.new(0.7, 0, 0, 8)
+            ValLabel.BackgroundTransparency = 1
+            ValLabel.Font = Enum.Font.Code
+            ValLabel.Text = tostring(Val)
+            ValLabel.TextColor3 = CurrentTheme.Light
+            ValLabel.TextSize = 12
+            ValLabel.TextXAlignment = Enum.TextXAlignment.Right
+            ValLabel.Parent = Frame
+
+            local SliderTrack = Instance.new("TextButton")
+            SliderTrack.Size = UDim2.new(1, -28, 0, 6)
+            SliderTrack.Position = UDim2.new(0, 14, 0, 36)
+            SliderTrack.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+            SliderTrack.Text = ""
+            SliderTrack.AutoButtonColor = false
+            SliderTrack.Parent = Frame
+
+            local TrackCorner = Instance.new("UICorner")
+            TrackCorner.CornerRadius = UDim.new(1, 0)
+            TrackCorner.Parent = SliderTrack
+
+            local pct = math.clamp((Val - Min) / (Max - Min), 0, 1)
+            local SliderFill = Instance.new("Frame")
+            SliderFill.Size = UDim2.new(pct, 0, 1, 0)
+            SliderFill.BackgroundColor3 = CurrentTheme.Accent
+            SliderFill.BorderSizePixel = 0
+            SliderFill.Parent = SliderTrack
+
+            local FillCorner = Instance.new("UICorner")
+            FillCorner.CornerRadius = UDim.new(1, 0)
+            FillCorner.Parent = SliderFill
+
+            local function setValFromInput(inputPos)
+                local relative = math.clamp((inputPos.X - SliderTrack.AbsolutePosition.X) / SliderTrack.AbsoluteSize.X, 0, 1)
+                local rawVal = Min + (Max - Min) * relative
+                if Rounding == 0 then
+                    Val = math.floor(rawVal + 0.5)
+                else
+                    Val = math.floor(rawVal * (10 ^ Rounding) + 0.5) / (10 ^ Rounding)
+                end
+                ValLabel.Text = tostring(Val)
+                SliderFill.Size = UDim2.new(relative, 0, 1, 0)
+                pcall(Callback, Val)
+            end
+
+            local sliding = false
+            SliderTrack.InputBegan:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                    sliding = true
+                    setValFromInput(input.Position)
+                end
+            end)
+
+            UserInputService.InputEnded:Connect(function(input)
+                if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+                    sliding = false
+                end
+            end)
+
+            UserInputService.InputChanged:Connect(function(input)
+                if sliding and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+                    setValFromInput(input.Position)
+                end
+            end)
+
+            return Frame
+        end
+
+        function TabObj:CreateDropdown(dropConfig)
+            dropConfig = dropConfig or {}
+            local Name = dropConfig.Name or "Dropdown"
+            local Options = dropConfig.Options or {}
+            local Selected = dropConfig.Default or Options[1] or ""
+            local Callback = dropConfig.Callback or function() end
+
+            local Frame = Instance.new("Frame")
+            Frame.Size = UDim2.new(1, -6, 0, 44)
+            Frame.BackgroundColor3 = CurrentTheme.BgInner
+            Frame.BackgroundTransparency = 0.35
+            Frame.Parent = TabPage
+
+            local Corner = Instance.new("UICorner")
+            Corner.CornerRadius = UDim.new(0, 10)
+            Corner.Parent = Frame
+
+            local Stroke = Instance.new("UIStroke")
+            Stroke.Color = CurrentTheme.Border
+            Stroke.Transparency = 0.75
+            Stroke.Parent = Frame
+
+            local Title = Instance.new("TextLabel")
+            Title.Size = UDim2.new(0.5, 0, 1, 0)
+            Title.Position = UDim2.new(0, 14, 0, 0)
+            Title.BackgroundTransparency = 1
+            Title.Font = Enum.Font.GothamBold
+            Title.Text = Name
+            Title.TextColor3 = Color3.fromRGB(248, 250, 252)
+            Title.TextSize = 13
+            Title.TextXAlignment = Enum.TextXAlignment.Left
+            Title.Parent = Frame
+
+            local DropBtn = Instance.new("TextButton")
+            DropBtn.Size = UDim2.new(0.45, 0, 0, 28)
+            DropBtn.Position = UDim2.new(1, -14, 0.5, 0)
+            DropBtn.AnchorPoint = Vector2.new(1, 0.5)
+            DropBtn.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+            DropBtn.Font = Enum.Font.GothamMedium
+            DropBtn.Text = tostring(Selected) .. "  ▼"
+            DropBtn.TextColor3 = CurrentTheme.Light
+            DropBtn.TextSize = 11
+            DropBtn.Parent = Frame
+
+            local BtnCorner = Instance.new("UICorner")
+            BtnCorner.CornerRadius = UDim.new(0, 8)
+            BtnCorner.Parent = DropBtn
+
+            local optIndex = 1
+            DropBtn.MouseButton1Click:Connect(function()
+                optIndex = optIndex + 1
+                if optIndex > #Options then optIndex = 1 end
+                Selected = Options[optIndex] or ""
+                DropBtn.Text = tostring(Selected) .. "  ▼"
+                pcall(Callback, Selected)
+            end)
+
+            return Frame
+        end
+
+        function TabObj:CreateInput(inputConfig)
+            inputConfig = inputConfig or {}
+            local Name = inputConfig.Name or "Input"
+            local Placeholder = inputConfig.Placeholder or "Nhập văn bản..."
+            local Callback = inputConfig.Callback or function() end
+
+            local Frame = Instance.new("Frame")
+            Frame.Size = UDim2.new(1, -6, 0, 44)
+            Frame.BackgroundColor3 = CurrentTheme.BgInner
+            Frame.BackgroundTransparency = 0.35
+            Frame.Parent = TabPage
+
+            local Corner = Instance.new("UICorner")
+            Corner.CornerRadius = UDim.new(0, 10)
+            Corner.Parent = Frame
+
+            local Stroke = Instance.new("UIStroke")
+            Stroke.Color = CurrentTheme.Border
+            Stroke.Transparency = 0.75
+            Stroke.Parent = Frame
+
+            local Title = Instance.new("TextLabel")
+            Title.Size = UDim2.new(0.4, 0, 1, 0)
+            Title.Position = UDim2.new(0, 14, 0, 0)
+            Title.BackgroundTransparency = 1
+            Title.Font = Enum.Font.GothamBold
+            Title.Text = Name
+            Title.TextColor3 = Color3.fromRGB(248, 250, 252)
+            Title.TextSize = 13
+            Title.TextXAlignment = Enum.TextXAlignment.Left
+            Title.Parent = Frame
+
+            local Box = Instance.new("TextBox")
+            Box.Size = UDim2.new(0.55, -14, 0, 28)
+            Box.Position = UDim2.new(1, -14, 0.5, 0)
+            Box.AnchorPoint = Vector2.new(1, 0.5)
+            Box.BackgroundColor3 = Color3.fromRGB(25, 25, 35)
+            Box.Font = Enum.Font.Gotham
+            Box.PlaceholderText = Placeholder
+            Box.PlaceholderColor3 = Color3.fromRGB(120, 120, 135)
+            Box.Text = ""
+            Box.TextColor3 = Color3.fromRGB(255, 255, 255)
+            Box.TextSize = 11.5
+            Box.ClearTextOnFocus = false
+            Box.Parent = Frame
+
+            local BoxCorner = Instance.new("UICorner")
+            BoxCorner.CornerRadius = UDim.new(0, 8)
+            BoxCorner.Parent = Box
+
+            Box.FocusLost:Connect(function(enterPressed)
+                pcall(Callback, Box.Text)
+            end)
+
+            return Frame
+        end
+
+        -- ================= DỰNG SECTION THEMES (5 BỘ THEMES + TỰ LƯU) =================
+        function TabObj:BuildThemeSection()
+            local SectionTitle = Instance.new("TextLabel")
+            SectionTitle.Size = UDim2.new(1, 0, 0, 28)
+            SectionTitle.BackgroundTransparency = 1
+            SectionTitle.Font = Enum.Font.GothamBold
+            SectionTitle.Text = "🎨 BỘ SƯU TẬP GIAO DIỆN ĐA SẮC (THEME COLOR)"
+            SectionTitle.TextColor3 = CurrentTheme.Light
+            SectionTitle.TextSize = 13.5
+            SectionTitle.TextXAlignment = Enum.TextXAlignment.Left
+            SectionTitle.Parent = TabPage
+
+            local SectionDesc = Instance.new("TextLabel")
+            SectionDesc.Size = UDim2.new(1, 0, 0, 24)
+            SectionDesc.BackgroundTransparency = 1
+            SectionDesc.Font = Enum.Font.Gotham
+            SectionDesc.Text = "Chọn màu chủ đạo ưa thích bên dưới. Hệ thống sẽ tự động ghi nhớ và khôi phục ở những lần chơi sau:"
+            SectionDesc.TextColor3 = Color3.fromRGB(148, 163, 184)
+            SectionDesc.TextSize = 11
+            SectionDesc.TextWrapped = true
+            SectionDesc.TextXAlignment = Enum.TextXAlignment.Left
+            SectionDesc.Parent = TabPage
+
+            local ThemeList = {
+                { name = "Luxury Gold", desc = "Vàng Kim Hoàng Gia (Mặc định)", color = Color3.fromRGB(245, 158, 11) },
+                { name = "Cyber Cyan", desc = "Xanh Điện Quang Công Nghệ", color = Color3.fromRGB(6, 182, 212) },
+                { name = "Ruby Crimson", desc = "Đỏ Huyết Tinh Quyền Lực", color = Color3.fromRGB(239, 68, 68) },
+                { name = "Emerald Green", desc = "Xanh Ngọc Lục Bảo Tinh Tế", color = Color3.fromRGB(16, 185, 129) },
+                { name = "Amethyst Purple", desc = "Tím Thạch Anh Huyền Ảo", color = Color3.fromRGB(168, 85, 247) },
+            }
+
+            for _, tData in ipairs(ThemeList) do
+                local Frame = Instance.new("Frame")
+                Frame.Size = UDim2.new(1, -6, 0, 48)
+                Frame.BackgroundColor3 = CurrentTheme.BgInner
+                Frame.BackgroundTransparency = 0.35
+                Frame.Parent = TabPage
+
+                local Corner = Instance.new("UICorner")
+                Corner.CornerRadius = UDim.new(0, 10)
+                Corner.Parent = Frame
+
+                local Stroke = Instance.new("UIStroke")
+                Stroke.Color = tData.color
+                Stroke.Transparency = 0.7
+                Stroke.Parent = Frame
+
+                local Dot = Instance.new("Frame")
+                Dot.Size = UDim2.new(0, 14, 0, 14)
+                Dot.Position = UDim2.new(0, 14, 0.5, 0)
+                Dot.AnchorPoint = Vector2.new(0, 0.5)
+                Dot.BackgroundColor3 = tData.color
+                Dot.Parent = Frame
+
+                local DotCorner = Instance.new("UICorner")
+                DotCorner.CornerRadius = UDim.new(1, 0)
+                DotCorner.Parent = Dot
+
+                local LabelName = Instance.new("TextLabel")
+                LabelName.Size = UDim2.new(1, -160, 0, 16)
+                LabelName.Position = UDim2.new(0, 36, 0, 8)
+                LabelName.BackgroundTransparency = 1
+                LabelName.Font = Enum.Font.GothamBold
+                LabelName.Text = tData.name
+                LabelName.TextColor3 = Color3.fromRGB(248, 250, 252)
+                LabelName.TextSize = 13
+                LabelName.TextXAlignment = Enum.TextXAlignment.Left
+                LabelName.Parent = Frame
+
+                local LabelDesc = Instance.new("TextLabel")
+                LabelDesc.Size = UDim2.new(1, -160, 0, 14)
+                LabelDesc.Position = UDim2.new(0, 36, 0, 26)
+                LabelDesc.BackgroundTransparency = 1
+                LabelDesc.Font = Enum.Font.Gotham
+                LabelDesc.Text = tData.desc
+                LabelDesc.TextColor3 = Color3.fromRGB(148, 163, 184)
+                LabelDesc.TextSize = 10.5
+                LabelDesc.TextXAlignment = Enum.TextXAlignment.Left
+                LabelDesc.Parent = Frame
+
+                local ApplyBtn = Instance.new("TextButton")
+                ApplyBtn.Size = UDim2.new(0, 75, 0, 28)
+                ApplyBtn.Position = UDim2.new(1, -85, 0.5, 0)
+                ApplyBtn.AnchorPoint = Vector2.new(0, 0.5)
+                ApplyBtn.BackgroundColor3 = tData.color
+                ApplyBtn.BackgroundTransparency = 0.2
+                ApplyBtn.Font = Enum.Font.GothamBold
+                ApplyBtn.Text = "Áp Dụng"
+                ApplyBtn.TextColor3 = Color3.fromRGB(10, 10, 16)
+                ApplyBtn.TextSize = 11.5
+                ApplyBtn.Parent = Frame
+
+                local BtnCorner = Instance.new("UICorner")
+                BtnCorner.CornerRadius = UDim.new(0, 8)
+                BtnCorner.Parent = ApplyBtn
+
+                ApplyBtn.MouseButton1Click:Connect(function()
+                    ApplyTheme(tData.name)
+                    UIScriptHub:Notification({
+                        Title = "Đổi Theme Thành Công!",
+                        Content = "Đã lưu và áp dụng giao diện: " .. tData.name,
+                        Icon = "palette",
+                        Duration = 3
+                    })
+                end)
+            end
+        end
+
+        function TabObj:BuildConfigSection()
+            self:BuildThemeSection()
+        end
+
+        table.insert(Window.Tabs, TabObj)
+
+        -- Kích hoạt tab đầu tiên
+        if #Window.Tabs == 1 then
+            activateTab()
+        end
+
+        return TabObj
+    end
+
+    -- ================= CREATE HOME TAB =================
+    function Window:CreateHomeTab(homeConfig)
+        homeConfig = homeConfig or {}
+        local Tab = self:CreateTab({
+            Name = "Trang Chủ",
+            Icon = "Home"
+        })
+
+        local Banner = Instance.new("Frame")
+        Banner.Size = UDim2.new(1, -6, 0, 110)
+        Banner.BackgroundColor3 = CurrentTheme.BgInner
+        Banner.BackgroundTransparency = 0.35
+        Banner.Parent = Tab.Page
+
+        local BannerCorner = Instance.new("UICorner")
+        BannerCorner.CornerRadius = UDim.new(0, 12)
+        BannerCorner.Parent = Banner
+
+        local BannerStroke = Instance.new("UIStroke")
+        BannerStroke.Color = CurrentTheme.Border
+        BannerStroke.Transparency = 0.6
+        BannerStroke.Parent = Banner
+
+        local WelcomeTitle = Instance.new("TextLabel")
+        WelcomeTitle.Size = UDim2.new(1, -20, 0, 22)
+        WelcomeTitle.Position = UDim2.new(0, 14, 0, 12)
+        WelcomeTitle.BackgroundTransparency = 1
+        WelcomeTitle.Font = Enum.Font.GothamBold
+        WelcomeTitle.Text = "🌸 Chào mừng bạn đến với " .. WindowName .. "!"
+        WelcomeTitle.TextColor3 = CurrentTheme.Light
+        WelcomeTitle.TextSize = 14
+        WelcomeTitle.TextXAlignment = Enum.TextXAlignment.Left
+        WelcomeTitle.Parent = Banner
+
+        local WelcomeDesc = Instance.new("TextLabel")
+        WelcomeDesc.Size = UDim2.new(1, -28, 0, 36)
+        WelcomeDesc.Position = UDim2.new(0, 14, 0, 38)
+        WelcomeDesc.BackgroundTransparency = 1
+        WelcomeDesc.Font = Enum.Font.Gotham
+        WelcomeDesc.Text = "Hệ thống tổng hợp script Roblox VIP độc quyền. Nhấn sang tab 'ScriptOpener' để chọn và thực thi các tựa game yêu thích."
+        WelcomeDesc.TextColor3 = Color3.fromRGB(148, 163, 184)
+        WelcomeDesc.TextSize = 11.5
+        WelcomeDesc.TextWrapped = true
+        WelcomeDesc.TextXAlignment = Enum.TextXAlignment.Left
+        WelcomeDesc.Parent = Banner
+
+        if homeConfig.DiscordInvite then
+            local BtnDiscord = Instance.new("TextButton")
+            BtnDiscord.Size = UDim2.new(0, 140, 0, 24)
+            BtnDiscord.Position = UDim2.new(0, 14, 0, 78)
+            BtnDiscord.BackgroundColor3 = Color3.fromRGB(88, 101, 242)
+            BtnDiscord.Font = Enum.Font.GothamBold
+            BtnDiscord.Text = "Tham Gia Discord"
+            BtnDiscord.TextColor3 = Color3.fromRGB(255, 255, 255)
+            BtnDiscord.TextSize = 11
+            BtnDiscord.Parent = Banner
+
+            local DiscCorner = Instance.new("UICorner")
+            DiscCorner.CornerRadius = UDim.new(0, 6)
+            DiscCorner.Parent = BtnDiscord
+
+            BtnDiscord.MouseButton1Click:Connect(function()
+                if setclipboard then
+                    setclipboard("https://discord.gg/" .. tostring(homeConfig.DiscordInvite))
+                    UIScriptHub:Notification({
+                        Title = "Discord Invite",
+                        Content = "Đã sao chép link Discord vào bộ nhớ tạm!",
+                        Duration = 3
+                    })
+                end
+            end)
+        end
+
+        return Tab
+    end
+
+    return Window
+end
+
+-- ================= HỆ THỐNG NOTIFICATION (TOAST) =================
+function UIScriptHub:Notification(notifConfig)
+    notifConfig = notifConfig or {}
+    local Title = notifConfig.Title or "Cao Tuấn Anh"
+    local Content = notifConfig.Content or ""
+    local Duration = notifConfig.Duration or 3.5
+
+    local ScreenGui = TargetGuiParent:FindFirstChild("CaoTuanAnh_ScriptHubGUI")
+    if not ScreenGui then return end
+
+    local ToastContainer = ScreenGui:FindFirstChild("ToastContainer")
+    if not ToastContainer then
+        ToastContainer = Instance.new("Frame")
+        ToastContainer.Name = "ToastContainer"
+        ToastContainer.Size = UDim2.new(0, 260, 0.8, 0)
+        ToastContainer.Position = UDim2.new(1, -280, 0, 20)
+        ToastContainer.BackgroundTransparency = 1
+        ToastContainer.Parent = ScreenGui
+
+        local Layout = Instance.new("UIListLayout")
+        Layout.FillDirection = Enum.FillDirection.Vertical
+        Layout.VerticalAlignment = Enum.VerticalAlignment.Top
+        Layout.Padding = UDim.new(0, 8)
+        Layout.Parent = ToastContainer
+    end
+
+    local Toast = Instance.new("Frame")
+    Toast.Size = UDim2.new(1, 0, 0, 54)
+    Toast.BackgroundColor3 = CurrentTheme.BgCard
+    Toast.BackgroundTransparency = 0.1
+    Toast.Position = UDim2.new(1, 40, 0, 0)
+    Toast.Parent = ToastContainer
+
+    local ToastCorner = Instance.new("UICorner")
+    ToastCorner.CornerRadius = UDim.new(0, 12)
+    ToastCorner.Parent = Toast
+
+    local ToastStroke = Instance.new("UIStroke")
+    ToastStroke.Color = CurrentTheme.Bright
+    ToastStroke.Thickness = 1.2
+    ToastStroke.Parent = Toast
+
+    local ToastIcon = Instance.new("ImageLabel")
+    ToastIcon.Size = UDim2.new(0, 22, 0, 22)
+    ToastIcon.Position = UDim2.new(0, 12, 0.5, 0)
+    ToastIcon.AnchorPoint = Vector2.new(0, 0.5)
+    ToastIcon.BackgroundTransparency = 1
+    ToastIcon.Image = Icons.Bell
+    ToastIcon.ImageColor3 = CurrentTheme.Bright
+    ToastIcon.Parent = Toast
+
+    local ToastTitle = Instance.new("TextLabel")
+    ToastTitle.Size = UDim2.new(1, -44, 0, 16)
+    ToastTitle.Position = UDim2.new(0, 40, 0, 10)
+    ToastTitle.BackgroundTransparency = 1
+    ToastTitle.Font = Enum.Font.GothamBold
+    ToastTitle.Text = Title
+    ToastTitle.TextColor3 = CurrentTheme.Light
+    ToastTitle.TextSize = 12
+    ToastTitle.TextXAlignment = Enum.TextXAlignment.Left
+    ToastTitle.Parent = Toast
+
+    local ToastContent = Instance.new("TextLabel")
+    ToastContent.Size = UDim2.new(1, -44, 0, 18)
+    ToastContent.Position = UDim2.new(0, 40, 0, 26)
+    ToastContent.BackgroundTransparency = 1
+    ToastContent.Font = Enum.Font.Gotham
+    ToastContent.Text = Content
+    ToastContent.TextColor3 = Color3.fromRGB(180, 190, 205)
+    ToastContent.TextSize = 10.5
+    ToastContent.TextXAlignment = Enum.TextXAlignment.Left
+    ToastContent.TextTruncate = Enum.TextTruncate.AtEnd
+    ToastContent.Parent = Toast
+
+    -- Animation Slide In & Slide Out
+    Toast.Position = UDim2.new(1, 60, 0, 0)
+    TweenService:Create(Toast, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Position = UDim2.new(0, 0, 0, 0)
+    }):Play()
+
+    task.delay(Duration, function()
+        if Toast and Toast.Parent then
+            TweenService:Create(Toast, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+                Position = UDim2.new(1, 60, 0, 0),
+                BackgroundTransparency = 1
+            }):Play()
+            task.wait(0.32)
+            Toast:Destroy()
+        end
+    end)
+end
+
+return UIScriptHub
